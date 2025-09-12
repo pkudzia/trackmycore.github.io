@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motion Tracking Reimagined</title>
+    <title>Core Motion - Biomechanics Technology</title>
     <style>
         * {
             margin: 0;
@@ -13,21 +13,53 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            color: #fff;
+            color: #f5f5f5;
             background: #0a0a0a;
             overflow-x: hidden;
         }
         
-        /* Animated gradient background */
+        /* Animated gradient background with earth tones */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* Background image layer */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1920');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.25) contrast(1.1) sepia(0.2);
+            z-index: 0;
+        }
+        
+        /* Animated gradient overlay with earth tones */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(-45deg, 
+                rgba(139, 90, 43, 0.6),  /* brown */
+                rgba(92, 64, 51, 0.6),   /* dark brown */
+                rgba(128, 128, 128, 0.4), /* grey */
+                rgba(165, 113, 78, 0.5)); /* tan brown */
+            background-size: 400% 400%;
+            animation: gradient 20s ease infinite;
+            z-index: 1;
         }
         
         @keyframes gradient {
@@ -38,17 +70,32 @@
         
         .hero-content {
             text-align: center;
-            z-index: 2;
+            z-index: 3;
             padding: 2rem;
+            position: relative;
         }
         
         .logo {
             font-size: 5rem;
             font-weight: 900;
             letter-spacing: -2px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             animation: slideDown 1s ease-out;
-            text-shadow: 0 0 40px rgba(255,255,255,0.5);
+            text-shadow: 0 0 40px rgba(165, 113, 78, 0.8);
+            background: linear-gradient(135deg, #d4a574, #8b5a2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a5714e;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
         }
         
         .tagline {
@@ -56,15 +103,16 @@
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
             margin-bottom: 2rem;
+            color: #e5e5e5;
         }
         
         .cta-button {
             display: inline-block;
             padding: 1rem 3rem;
             font-size: 1.1rem;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
-            color: white;
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.3), rgba(92, 64, 51, 0.5));
+            border: 2px solid #a5714e;
+            color: #f5f5f5;
             text-decoration: none;
             border-radius: 50px;
             backdrop-filter: blur(10px);
@@ -72,13 +120,15 @@
             opacity: 0;
             animation: fadeIn 1s ease-out 1s forwards;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .cta-button:hover {
-            background: white;
-            color: #333;
+            background: linear-gradient(135deg, #a5714e, #8b5a2b);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(139, 90, 43, 0.4);
+            border-color: #d4a574;
         }
         
         @keyframes slideDown {
@@ -98,7 +148,7 @@
             }
         }
         
-        /* Floating particles */
+        /* Floating particles with earth tones */
         .particles {
             position: absolute;
             top: 0;
@@ -106,13 +156,14 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            z-index: 2;
         }
         
         .particle {
             position: absolute;
-            background: rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.6), rgba(139, 90, 43, 0.4));
             border-radius: 50%;
-            animation: float 20s infinite;
+            animation: float 25s infinite;
         }
         
         @keyframes float {
@@ -121,10 +172,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.8;
             }
             90% {
-                opacity: 1;
+                opacity: 0.8;
             }
             100% {
                 transform: translateY(-1000px) translateX(100px) rotate(720deg);
@@ -134,7 +185,7 @@
         
         /* Main content sections */
         .content {
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #2c2c2c 100%);
             padding: 5rem 0;
         }
         
@@ -148,10 +199,12 @@
             font-size: 3rem;
             margin-bottom: 2rem;
             text-align: center;
-            background: linear-gradient(90deg, #23a6d5, #e73c7e);
+            background: linear-gradient(90deg, #d4a574, #8b5a2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .features {
@@ -162,11 +215,11 @@
         }
         
         .feature-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            background: linear-gradient(135deg, rgba(92, 64, 51, 0.2) 0%, rgba(40, 40, 40, 0.3) 100%);
             padding: 2rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(165, 113, 78, 0.2);
             transition: all 0.3s;
             opacity: 0;
             animation: slideUp 0.8s ease-out forwards;
@@ -190,31 +243,33 @@
         
         .feature-card:hover {
             transform: translateY(-10px) scale(1.05);
-            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 100%);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.3) 0%, rgba(40, 40, 40, 0.4) 100%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: #a5714e;
         }
         
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             display: block;
+            color: #d4a574;
         }
         
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #fff;
+            color: #e5e5e5;
         }
         
         .feature-desc {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.6;
         }
         
         /* Team section */
         .team {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
         }
         
         .team-grid {
@@ -238,42 +293,49 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8b5a2b 0%, #5c4033 100%);
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            font-weight: bold;
+            color: #f5f5f5;
+            box-shadow: 0 10px 30px rgba(139, 90, 43, 0.3);
             transition: transform 0.3s;
+            border: 3px solid #a5714e;
         }
         
         .avatar:hover {
             transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(165, 113, 78, 0.4);
         }
         
         .team-name {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: #d4a574;
         }
         
         .team-title {
-            color: #23a6d5;
+            color: #a5714e;
             font-size: 1.1rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .team-credentials {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.5);
             margin-top: 0.5rem;
         }
         
         /* Contact section */
         .contact {
             padding: 5rem 0;
-            background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background: linear-gradient(45deg, #8b5a2b, #5c4033, #808080, #a5714e);
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 20s ease infinite;
             text-align: center;
         }
         
@@ -293,22 +355,24 @@
             border-radius: 50px;
             transition: all 0.3s;
             backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.1);
+            background: rgba(139, 90, 43, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .email-link:hover {
             background: white;
-            color: #e73c7e;
+            color: #8b5a2b;
             transform: scale(1.05);
         }
         
         /* Footer */
         footer {
             background: #0a0a0a;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.4);
             text-align: center;
             padding: 2rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(165, 113, 78, 0.2);
         }
         
         /* Scroll indicator */
@@ -336,21 +400,21 @@
         .scroll-indicator::after {
             content: '↓';
             font-size: 2rem;
-            color: rgba(255,255,255,0.5);
+            color: rgba(212, 165, 116, 0.6);
         }
         
         /* Mobile responsive */
         @media (max-width: 768px) {
             .logo {
-                font-size: 3rem;
+                font-size: 4rem;
             }
             
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .team-grid {
@@ -363,36 +427,37 @@
     <section class="hero">
         <div class="particles" id="particles"></div>
         <div class="hero-content">
-            <h1 class="logo">[YOUR BRAND]</h1>
-            <p class="tagline">Revolutionizing Athletic Performance Through Motion Intelligence</p>
-            <a href="#features" class="cta-button">Discover the Future</a>
+            <h1 class="logo">CORE MOTION</h1>
+            <p class="subtitle">Biomechanics Technology</p>
+            <p class="tagline">Precision Movement Analysis for Peak Performance</p>
+            <a href="#features" class="cta-button">Explore Technology</a>
         </div>
         <div class="scroll-indicator"></div>
     </section>
     
     <section class="content" id="features">
         <div class="container">
-            <h2>Cutting-Edge Technology</h2>
+            <h2>Advanced Biomechanics</h2>
             <div class="features">
                 <div class="feature-card">
                     <span class="feature-icon">⚡</span>
-                    <h3 class="feature-title">Lightning Fast</h3>
-                    <p class="feature-desc">Real-time feedback that adapts to your movement instantly</p>
+                    <h3 class="feature-title">Real-Time Analysis</h3>
+                    <p class="feature-desc">Instantaneous biomechanical feedback for immediate performance optimization</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">🎯</span>
                     <h3 class="feature-title">Precision Tracking</h3>
-                    <p class="feature-desc">Advanced sensor fusion for unparalleled accuracy</p>
+                    <p class="feature-desc">Sub-centimeter accuracy in motion capture and analysis</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">🚀</span>
-                    <h3 class="feature-title">Future Ready</h3>
-                    <p class="feature-desc">Continuously evolving with cutting-edge innovations</p>
+                    <span class="feature-icon">🔬</span>
+                    <h3 class="feature-title">Scientific Foundation</h3>
+                    <p class="feature-desc">Research-driven algorithms backed by biomechanical science</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">💫</span>
-                    <h3 class="feature-title">Seamless Experience</h3>
-                    <p class="feature-desc">Intuitive design that works with your workflow</p>
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">Data Intelligence</h3>
+                    <p class="feature-desc">Advanced analytics transforming movement into actionable insights</p>
                 </div>
             </div>
         </div>
@@ -400,7 +465,7 @@
     
     <section class="team">
         <div class="container">
-            <h2>Visionary Leadership</h2>
+            <h2>Leadership</h2>
             <div class="team-grid">
                 <div class="team-member">
                     <div class="avatar">DG</div>
@@ -420,30 +485,30 @@
     
     <section class="contact">
         <div class="container">
-            <h2>Ready to Transform Your Performance?</h2>
-            <p style="font-size: 1.2rem; margin: 1rem 0;">Join the revolution in motion tracking technology</p>
-            <a href="mailto:info@yourdomain.com" class="email-link">Get in Touch</a>
+            <h2>Advance Your Performance</h2>
+            <p style="font-size: 1.2rem; margin: 1rem 0;">Discover the future of movement analysis</p>
+            <a href="mailto:info@coremotion.tech" class="email-link">Contact Us</a>
         </div>
     </section>
     
     <footer>
         <div class="container">
-            <p>&copy; 2025 [YOUR COMPANY NAME]. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;">Patent Pending | Confidential & Proprietary</p>
+            <p>&copy; 2025 Core Motion Technologies. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">Patent Pending | Proprietary Technology</p>
         </div>
     </footer>
     
     <script>
-        // Generate floating particles
+        // Generate floating particles with earth tones
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
-            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.width = Math.random() * 8 + 4 + 'px';
             particle.style.height = particle.style.width;
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = 20 + Math.random() * 10 + 's';
+            particle.style.animationDelay = Math.random() * 25 + 's';
+            particle.style.animationDuration = 25 + Math.random() * 15 + 's';
             particlesContainer.appendChild(particle);
         }
         
