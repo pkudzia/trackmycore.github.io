@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Motion - Biomechanics Technology</title>
+    <title>Core Motion - A Wearable</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -225,6 +225,15 @@
             font-size: 0.9rem;
         }
         
+        .mission-card {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.1), rgba(212, 165, 116, 0.05));
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
         .team-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -311,6 +320,16 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--brown-light), var(--brown-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -321,9 +340,9 @@
                 <h1 class="logo">CORE<br>MOTION</h1>
                 <div class="logo-accent" data-aos="zoom-in" data-aos-delay="300"></div>
             </div>
-            <p class="tagline" data-aos="fade-up" data-aos-delay="100">A Wearable Device</p>
+            <p class="tagline" data-aos="fade-up" data-aos-delay="100">Center of Mass Tracking Technology</p>
             <a href="#features" class="cta-button" data-aos="fade-up" data-aos-delay="200">
-                LEARN MORE
+                DISCOVER MORE
                 <i data-feather="arrow-right"></i>
             </a>
         </div>
@@ -334,32 +353,73 @@
         <div class="container mx-auto px-6">
             <div class="section-header text-center mb-16" data-aos="fade-up">
                 <p class="section-label text-brown-light uppercase tracking-widest text-sm mb-4">Technology</p>
-                <h2 class="text-4xl md:text-6xl font-bold font-syne bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">Our wearable is like a third eye</h2>
+                <h2 class="text-4xl md:text-6xl font-bold font-syne bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">Precision Performance Tracking</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="100">
-                    <span class="bento-icon">🎯</span>
-                    <h3 class="bento-title">Real-time biomechanical feedback</h3>
-                    <p class="bento-desc">0.001s</p>
+                    <div>
+                        <span class="bento-icon">⚡</span>
+                        <h3 class="bento-title">Real-Time Feedback</h3>
+                        <p class="bento-desc">Audio and haptic alerts in under 140ms when your form needs adjustment</p>
+                    </div>
+                    <div class="metric-value mt-4">0.14s</div>
                 </div>
                 
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="150">
-                    <span class="bento-icon">🔬</span>
-                    <h3 class="bento-title">Research Driven</h3>
-                    <p class="bento-desc">Backed by peer-reviewed biomechanical science</p>
+                    <div>
+                        <span class="bento-icon">💪</span>
+                        <h3 class="bento-title">Wearable Design</h3>
+                        <p class="bento-desc">Lightweight chest strap with IMU and LiDAR sensors. Secure fit that won't interfere with your movement</p>
+                    </div>
+                    <div class="metric-value mt-4">&lt;155g</div>
                 </div>
                 
-                <div class="bento-item md:col-span-2" data-aos="fade-up" data-aos-delay="200">
-                    <span class="bento-icon">📊</span>
-                    <h3 class="bento-title">Analytics</h3>
-                    <p class="bento-desc">Raw data into actionable performance metrics</p>
+                <div class="bento-item" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <span class="bento-icon">📊</span>
+                        <h3 class="bento-title">Track Your Progress</h3>
+                        <p class="bento-desc">Save sessions, visualize your center of mass data, and monitor improvement over time</p>
+                    </div>
+                    <div class="metric-value mt-4">∞</div>
                 </div>
             </div>
         </div>
     </section>
     
     <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="section-header text-center mb-16" data-aos="fade-up">
+                <p class="section-label text-brown-light uppercase tracking-widest text-sm mb-4">Our Mission</p>
+                <h2 class="text-4xl md:text-6xl font-bold font-syne bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent mb-8">Bridging the Gap</h2>
+            </div>
+            
+            <div class="mission-card max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-xl leading-relaxed mb-8">
+                    We're revolutionizing athletic rehabilitation and performance training by making center of mass tracking accessible, affordable, and actionable.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="metric-value">15.37cm</div>
+                        <p class="text-sm text-gray-400">Tracking Accuracy</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                        <div class="metric-value">800Hz</div>
+                        <p class="text-sm text-gray-400">Sampling Rate</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="metric-value">$500</div>
+                        <p class="text-sm text-gray-400">Target Price</p>
+                    </div>
+                </div>
+                <p class="text-lg mt-12 text-gray-300">
+                    Our goal is to empower every athlete—from ACL recovery patients to elite performers—with the same biomechanical insights previously reserved for high-end research labs.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-6">
             <div class="section-header text-center mb-16" data-aos="fade-up">
                 <p class="section-label text-brown-light uppercase tracking-widest text-sm mb-4">Leadership</p>
@@ -390,10 +450,15 @@
         <div class="cta-section"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="cta-content" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-6">Ready to Transform Performance?</h2>
-                <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">Join the revolution in biomechanical analysis</p>
-                <a href="mailto:info@coremotion.tech" class="cta-button inline-flex items-center" data-aos="fade-up" data-aos-delay="100">
-                    GET IN TOUCH
+                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-6">Ready to Invest in the Future?</h2>
+                <p class="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
+                    Join us in democratizing biomechanical analysis for athletes worldwide
+                </p>
+                <p class="text-md text-gray-500 mb-8 max-w-3xl mx-auto">
+                    With a $3.2B wearable sports technology market growing at 15% annually, COMET represents a unique opportunity to capture an underserved segment in athletic rehabilitation and performance optimization.
+                </p>
+                <a href="mailto:investors@coremotion.tech" class="cta-button inline-flex items-center" data-aos="fade-up" data-aos-delay="100">
+                    INVESTOR INQUIRIES
                     <i data-feather="arrow-right" class="ml-2"></i>
                 </a>
             </div>
@@ -403,7 +468,7 @@
     <footer class="py-12 bg-black border-t border-gray-800">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-500 text-sm">&copy; 2025 Core Motion Technologies. All rights reserved.</p>
-            <p class="text-gray-500 text-sm mt-2">Patent Pending · Proprietary Technology</p>
+            <p class="text-gray-500 text-sm mt-2">Patent Pending · Proprietary Technology · FDA Registration In Progress</p>
         </div>
     </footer>
     
