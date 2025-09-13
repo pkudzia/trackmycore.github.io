@@ -399,6 +399,7 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
         
+        /* FIXED IMAGE SCALING */
         .avatar {
             width: 120px;
             height: 120px;
@@ -413,6 +414,18 @@
             color: var(--white);
             position: relative;
             transition: all 0.4s;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .avatar img {
+            width: 120px !important;
+            height: 120px !important;
+            max-width: 120px !important;
+            max-height: 120px !important;
+            object-fit: cover;
+            border-radius: inherit;
+            display: block;
         }
         
         .team-card:hover .avatar {
@@ -566,26 +579,6 @@
                     <h3 class="bento-title"> Analytics</h3>
                     <p class="bento-desc">Raw data into actionable performance metrics</p>
                 </div>
-<!--                 <div class="bento-item large">
-                    <div>
-                        <span class="bento-icon">⚡</span>
-                        <h3 class="bento-title">Real-Time</h3>
-                        <p class="bento-desc">Sub-millisecond response times with advanced sensor fusion delivering biomechanical insights</p>
-                    <div class="bento-stat">0.001s</div>
-                </div>
-                
-                
-                <div class="bento-item">
-                    <span class="bento-icon">🚀</span>
-                    <h3 class="bento-title">Next Generation</h3>
-                    <p class="bento-desc">Pioneering the future of Rehabiltion</p>
-                </div>
-                
-                <div class="bento-item">
-                    <span class="bento-icon">💫</span>
-                    <h3 class="bento-title">Seamless Integration</h3>
-                    <p class="bento-desc">Works with existing training workflows</p>
-                </div> -->
             </div>
         </div>
     </section>
@@ -607,7 +600,7 @@
                 <div class="team-card">
                     <div class="avatar">
                         <img src="Pawel_Pic.png" alt="Pawel Kudzia">
-<!--                     </div> -->
+                    </div>
                     <h3 class="team-name">Dr. Pawel Kudzia</h3>
                     <p class="team-title">Chief Technology Officer</p>
                     <p class="team-credentials">PhD, MAsc, B.Eng </p>
