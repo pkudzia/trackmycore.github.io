@@ -54,20 +54,26 @@
             padding: 2rem;
             position: relative;
         }
-        
         .logo {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 0.9;
-            background: linear-gradient(135deg, var(--brown-light), var(--brown-primary));
+            letter-spacing: -3px;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 30%, var(--brown-light) 70%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 2px 10px rgba(212, 165, 116, 0.3);
+            position: relative;
+            z-index: 10;
         }
-        
-        .logo-accent {
+
+        .parallax-bg {
+            will-change: transform;
+            transform: translateZ(0);
+            transition: transform 0.4s ease-out;
+        }
+.logo-accent {
             position: absolute;
             top: -10px;
             right: -20px;
@@ -333,24 +339,24 @@
     </style>
 </head>
 <body>
-    <section class="hero">
+    <section class="hero" id="features">
         <div id="vanta-bg" class="vanta-bg"></div>
-        <div class="hero-content">
-            <div class="logo-container" data-aos="fade-up">
-                <h1 class="logo">CORE<br>MOTION</h1>
-                <div class="logo-accent" data-aos="zoom-in" data-aos-delay="300"></div>
+<div class="hero-content">
+            <div class="logo-container relative" data-aos="fade-up">
+                <h1 class="logo text-8xl md:text-9xl font-extrabold tracking-tight">CoreMotion</h1>
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4a574]/10 opacity-60"></div>
             </div>
-            <p class="tagline" data-aos="fade-up" data-aos-delay="100">Center of Mass Tracking Technology</p>
-            <a href="#features" class="cta-button" data-aos="fade-up" data-aos-delay="200">
-                DISCOVER MORE
-                <i data-feather="arrow-right"></i>
-            </a>
-        </div>
+            <p class="tagline" data-aos="fade-up" data-aos-delay="100">Biomechanical Intelligence</p>
+            <div class="relative h-64 w-full overflow-hidden rounded-xl mt-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#d4a574]/20 to-transparent"></div>
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?q=80&w=2832&auto=format&fit=crop')] bg-cover bg-center parallax-bg"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
+            </div>
+</div>
         <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400"></div>
     </section>
-    
-    <section class="py-20 bg-gradient-to-b from-black to-gray-900" id="features">
-        <div class="container mx-auto px-6">
+    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
+<div class="container mx-auto px-6">
             <div class="section-header text-center mb-16" data-aos="fade-up">
                 <p class="section-label text-brown-light uppercase tracking-widest text-sm mb-4">Technology</p>
                 <h2 class="text-4xl md:text-6xl font-bold font-syne bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">Precision Performance Tracking</h2>
@@ -407,11 +413,7 @@
                         <div class="metric-value">100Hz</div>
                         <p class="text-sm text-gray-400">Sampling Rate</p>
                     </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="metric-value">$500</div>
-                        <p class="text-sm text-gray-400">Target Price</p>
-                    </div>
-                </div>
+</div>
                 <p class="text-lg mt-12 text-gray-300">
                     Our goal is to empower every athlete—from ACL recovery patients to elite performers—with the same biomechanical insights previously reserved for high-end research labs.
                 </p>
@@ -496,16 +498,19 @@
             backgroundColor: 0x0a0a0a,
             size: 0.8
         });
-        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+});
         });
-    </script>
+
+        // Parallax effect
+        const parallaxBg = document.querySelector('.parallax-bg');
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+        });
+</script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
