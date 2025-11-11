@@ -359,21 +359,20 @@
         </div>
     </nav>
     <section class="hero pt-20" id="features">
-<div id="vanta-bg" class="vanta-bg"></div>
+<div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://static.photos/sport/1200x630/42')] bg-cover bg-center parallax-bg"></div>
+    <div class="absolute inset-0 bg-black/40"></div>
+</div>
 <div class="hero-content">
             <div class="logo-container relative" data-aos="fade-up">
                 <h1 class="logo font-syne tracking-tighter">CoreMotion</h1>
-<div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4a574]/10 opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4a574]/10 opacity-60"></div>
             </div>
-            <p class="tagline uppercase tracking-[0.25em] text-sm mb-4" data-aos="fade-up" data-aos-delay="100">Track your core for real-time objective data</p>
-<div class="relative h-64 w-full overflow-hidden rounded-xl mt-8" data-aos="fade-up" data-aos-delay="200">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#d4a574]/20 to-transparent"></div>
-                <div class="absolute inset-0 overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('https://static.photos/technology/1024x576/42')] bg-cover bg-center parallax-bg"></div>
-                    <div class="absolute inset-0 bg-black/30"></div>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
-</div>
+            <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                <p class="tagline uppercase tracking-[0.25em] text-sm mb-4 relative inline-block">
+                    Track your core
+</p>
+            </div>
 </div>
         <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400"></div>
     </section>
@@ -497,21 +496,7 @@
         });
         
         feather.replace();
-        
-        VANTA.GLOBE({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0xd4a574,
-            backgroundColor: 0x0a0a0a,
-            size: 0.8
-        });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
 });
@@ -524,6 +509,6 @@
             parallaxBg.style.transform = `translateY(${scrollPosition * 0.3}px)`;
         });
 </script>
-<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+
 </body>
 </html>
