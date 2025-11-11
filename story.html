@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Core Motion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Syne:wght@400;500;600;700;800&display=swap');
+        :root {
+            --brown-primary: #8b5a2b;
+            --brown-light: #d4a574;
+            --brown-dark: #5c4033;
+            --grey: #808080;
+            --black: #0a0a0a;
+            --white: #f5f5f5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white font-syne font-bold text-xs">CoreMotion</a>
+<div class="flex space-x-8">
+                <a href="story.html" class="text-white font-medium">Our Story</a>
+                <a href="product.html" class="text-white/70 hover:text-white transition-colors">Our Product</a>
+                <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-32 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-5xl font-bold font-syne mb-8" data-aos="fade-up">Our Story</h1>
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">
+                Core Motion was founded in 2023 by Diego Grossling and Dr. Pawel Kudzia with a shared vision to democratize biomechanical analysis for athletes of all levels.
+            </p>
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="150">
+                After years working in sports medicine and rehabilitation, Diego recognized the gap between clinical-grade motion analysis and what was available to everyday athletes. Meanwhile, Pawel was developing novel sensor fusion algorithms during his PhD research.
+            </p>
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="200">
+                Combining their expertise, they created the first wearable system that tracks center of mass with research-grade accuracy at a fraction of the cost of existing solutions.
+            </p>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
