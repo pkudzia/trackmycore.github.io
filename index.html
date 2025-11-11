@@ -57,18 +57,27 @@
         .logo {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            letter-spacing: -3px;
-            line-height: 1;
-            background: linear-gradient(135deg, #fff 30%, var(--brown-light) 70%);
+            letter-spacing: -2px;
+            line-height: 0.9;
+            background: linear-gradient(135deg, #fff 0%, var(--brown-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 2px 10px rgba(212, 165, 116, 0.3);
             position: relative;
             z-index: 10;
+            font-size: 6rem;
+            margin-bottom: 0.5rem;
         }
-
-        .parallax-bg {
+.logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brown-light), transparent);
+        }
+.parallax-bg {
             will-change: transform;
             transform: translateZ(0);
             transition: transform 0.4s ease-out;
@@ -82,15 +91,15 @@
             background: var(--brown-light);
             border-radius: 50%;
         }
-        
         .tagline {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: 200;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            color: var(--brown-light);
+            text-transform: uppercase;
+            margin-top: -1rem;
         }
-        
-        .cta-button {
+.cta-button {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
@@ -339,19 +348,32 @@
     </style>
 </head>
 <body>
-    <section class="hero" id="features">
-        <div id="vanta-bg" class="vanta-bg"></div>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white font-syne font-bold text-xs">CoreMotion</a>
+<div class="flex space-x-8">
+                <a href="story.html" class="text-white/70 hover:text-white transition-colors">Our Story</a>
+                <a href="product.html" class="text-white/70 hover:text-white transition-colors">Our Product</a>
+                <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+    <section class="hero pt-20" id="features">
+<div id="vanta-bg" class="vanta-bg"></div>
 <div class="hero-content">
             <div class="logo-container relative" data-aos="fade-up">
-                <h1 class="logo text-8xl md:text-9xl font-extrabold tracking-tight">CoreMotion</h1>
-                <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4a574]/10 opacity-60"></div>
+                <h1 class="logo font-syne tracking-tighter">CoreMotion</h1>
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#d4a574]/10 opacity-60"></div>
             </div>
-            <p class="tagline" data-aos="fade-up" data-aos-delay="100">Biomechanical Intelligence</p>
-            <div class="relative h-64 w-full overflow-hidden rounded-xl mt-8" data-aos="fade-up" data-aos-delay="200">
+            <p class="tagline uppercase tracking-[0.25em] text-sm mb-4" data-aos="fade-up" data-aos-delay="100">Track your core for real-time objective data</p>
+<div class="relative h-64 w-full overflow-hidden rounded-xl mt-8" data-aos="fade-up" data-aos-delay="200">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#d4a574]/20 to-transparent"></div>
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?q=80&w=2832&auto=format&fit=crop')] bg-cover bg-center parallax-bg"></div>
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://static.photos/technology/1024x576/42')] bg-cover bg-center parallax-bg"></div>
+                    <div class="absolute inset-0 bg-black/30"></div>
+                </div>
                 <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
-            </div>
+</div>
 </div>
         <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400"></div>
     </section>
@@ -415,9 +437,9 @@
                     </div>
 </div>
                 <p class="text-lg mt-12 text-gray-300">
-                    Our goal is to empower every athlete—from ACL recovery patients to elite performers—with the same biomechanical insights previously reserved for high-end research labs.
+                    We deliver clinical-grade biomechanical analysis through wearable technology, providing athletes and clinicians with unprecedented movement insights to optimize performance and accelerate rehabilitation.
                 </p>
-            </div>
+</div>
         </div>
     </section>
     
@@ -449,27 +471,18 @@
             </div>
         </div>
     </section>
-    
     <section class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-        <div class="cta-section"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="container mx-auto px-6 text-center">
             <div class="cta-content" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-6">We are seeking excited investors</h2>
-                <p class="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
-                    Join us in democratizing biomechanical analysis for athletes worldwide
-                </p>
-                <p class="text-md text-gray-500 mb-8 max-w-3xl mx-auto">
-                    With a $3.2B wearable sports technology market growing at 15% annually, COMET represents a unique opportunity to capture an underserved segment in athletic rehabilitation and performance optimization.
-                </p>
-                <a href="mailto:investors@coremotion.tech" class="cta-button inline-flex items-center" data-aos="fade-up" data-aos-delay="100">
-                    INVESTOR INQUIRIES
+                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-6">Ready to experience the future of movement?</h2>
+                <a href="contact.html" class="cta-button inline-flex items-center" data-aos="fade-up" data-aos-delay="100">
+                    GET IN TOUCH
                     <i data-feather="arrow-right" class="ml-2"></i>
                 </a>
             </div>
         </div>
     </section>
-    
-    <footer class="py-12 bg-black border-t border-gray-800">
+<footer class="py-12 bg-black border-t border-gray-800">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-500 text-sm">&copy; 2025 Core Motion Technologies. All rights reserved.</p>
             <p class="text-gray-500 text-sm mt-2">Patent Pending · Proprietary Technology · FDA Registration In Progress</p>
