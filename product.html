@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Product - Core Motion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Syne:wght@400;500;600;700;800&display=swap');
+        :root {
+            --brown-primary: #8b5a2b;
+            --brown-light: #d4a574;
+            --brown-dark: #5c4033;
+            --grey: #808080;
+            --black: #0a0a0a;
+            --white: #f5f5f5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white font-syne font-bold text-xs">CoreMotion</a>
+<div class="flex space-x-8">
+                <a href="story.html" class="text-white/70 hover:text-white transition-colors">Our Story</a>
+                <a href="product.html" class="text-white font-medium">Our Product</a>
+                <a href="contact.html" class="text-white/70 hover:text-white transition-colors">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-32 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-5xl font-bold font-syne mb-8" data-aos="fade-up">Our Product</h1>
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">
+                The Core Motion system consists of three key components working together to provide real-time biomechanical feedback.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
+                <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="text-xl font-syne mb-4">Wearable Sensor Array</h3>
+                    <p class="text-gray-400">Lightweight, medical-grade IMU sensors that track movement with 0.01cm accuracy.</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-syne mb-4">Processing Unit</h3>
+                    <p class="text-gray-400">Proprietary algorithms that calculate center of mass in real-time at 100Hz.</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="250">
+                    <h3 class="text-xl font-syne mb-4">Mobile App</h3>
+                    <p class="text-gray-400">Visual feedback, session tracking, and performance analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
