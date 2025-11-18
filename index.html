@@ -6,6 +6,18 @@
     <meta name="description" content="Core Motion - Wearable ACL rehabilitation technology providing objective movement analysis and real-time biofeedback for safer return-to-sport decisions">
     <title>Core Motion - ACL Rehabilitation Technology</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'syne': ['Syne', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -21,7 +33,6 @@
             --white: #f5f5f5;
         }
         
-        /* Prevent horizontal scroll on mobile */
         html, body {
             overflow-x: hidden;
             max-width: 100%;
@@ -35,44 +46,18 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* Improved Navigation Styling */
-        nav {
-            min-height: 70px;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            padding: 1rem 1rem;
-        }
-        
-        @media (min-width: 768px) {
-            .nav-container {
-                padding: 1rem 2rem;
-            }
-        }
-        
         /* Mobile Navigation */
         .mobile-menu-btn {
             display: none;
-            padding: 0.5rem;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            color: var(--white);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-btn:hover {
-            border-color: var(--gold-primary);
-            background: rgba(184, 134, 11, 0.1);
         }
         
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
+                padding: 0.5rem;
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
             }
             
             .desktop-nav {
@@ -86,18 +71,6 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 padding: 1rem;
                 z-index: 40;
-                animation: slideDown 0.3s ease;
-            }
-            
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
             }
             
             .desktop-nav.active {
@@ -109,42 +82,6 @@
                 padding: 1rem;
                 text-align: center;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                transition: all 0.3s ease;
-            }
-            
-            .desktop-nav a:hover {
-                background: rgba(184, 134, 11, 0.1);
-                color: var(--gold-primary);
-            }
-        }
-        
-        /* Desktop Navigation Improvements */
-        @media (min-width: 769px) {
-            .desktop-nav {
-                display: flex;
-                gap: 2rem;
-                align-items: center;
-            }
-            
-            .desktop-nav a {
-                position: relative;
-                padding: 0.5rem 0;
-                transition: all 0.3s ease;
-            }
-            
-            .desktop-nav a::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: var(--gold-primary);
-                transition: width 0.3s ease;
-            }
-            
-            .desktop-nav a:hover::after {
-                width: 100%;
             }
         }
         
@@ -180,24 +117,7 @@
             }
         }
         
-        /* Split color logo for navigation - FIXED SIZING */
-        .nav-logo {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            transition: opacity 0.3s ease;
-            font-size: 1.25rem;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        
-        @media (min-width: 768px) {
-            .nav-logo {
-                font-size: 1.5rem;
-                letter-spacing: 0;
-            }
-        }
-        
+        /* Split color logo for navigation */
         .nav-logo .core-text {
             color: var(--gold-primary);
         }
@@ -208,8 +128,7 @@
         
         .nav-logo:hover {
             opacity: 0.9;
-            transform: scale(1.02);
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         
         /* Main hero mission statement */
@@ -370,20 +289,6 @@
             text-align: center;
             transition: all 0.3s ease;
             min-height: 150px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
         
         @media (min-width: 768px) {
@@ -400,10 +305,6 @@
             .stat-card:hover {
                 border-color: var(--gold-primary);
                 transform: translateY(-5px);
-            }
-            
-            .stat-card:hover::before {
-                opacity: 1;
             }
         }
         
@@ -583,11 +484,6 @@
             display: inline-flex;
             align-items: center;
             padding: 0.25rem;
-            transition: all 0.3s ease;
-        }
-        
-        .linkedin-link:hover {
-            transform: scale(1.1);
         }
         
         .team-title {
@@ -638,7 +534,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: var(--white);
-            font-size: 16px; /* Prevents zoom on iOS */
+            font-size: 16px;
             transition: all 0.3s ease;
         }
         
@@ -711,7 +607,7 @@
             visibility: visible;
         }
         
-        /* Waitlist Side Popup - Full screen on mobile */
+        /* Waitlist Side Popup */
         .waitlist-popup {
             position: fixed;
             right: -100%;
@@ -858,7 +754,6 @@
             flex-shrink: 0;
         }
         
-        /* Improved mobile padding and spacing */
         .section-padding {
             padding: 3rem 1rem;
         }
@@ -869,7 +764,6 @@
             }
         }
         
-        /* Footer mobile optimizations */
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -890,7 +784,6 @@
             }
         }
         
-        /* Touch-friendly link spacing */
         .footer-links a {
             display: block;
             padding: 0.5rem 0;
@@ -899,93 +792,29 @@
             align-items: center;
         }
         
-        /* Success Message Styling */
-        .success-message {
-            position: fixed;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .success-message.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Accessibility Improvements */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-        
-        /* Focus Styles for Better Keyboard Navigation */
-        a:focus,
-        button:focus,
-        input:focus {
-            outline: 2px solid var(--gold-primary);
-            outline-offset: 2px;
-        }
-        
-        /* Loading State for Video */
-        .video-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--gold-primary);
-        }
-        
-        .video-loading::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 40px;
-            margin: 20px auto;
-            border: 3px solid transparent;
-            border-top-color: var(--gold-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Fix for text descenders being cut off */
+        .heading-with-descenders {
+            display: block !important;
+            line-height: 1.25 !important;
+            padding-bottom: 0.3em !important;
+            margin-bottom: 2rem !important;
+            overflow: visible !important;
+            text-rendering: optimizeLegibility;
         }
     </style>
 </head>
 <body>
-    <!-- Success Message -->
-    <div class="success-message" id="successMessage">
-        Thank you for joining our waitlist! Check your email for confirmation.
-    </div>
-
-    <!-- Navigation -->
+    <!-- Navigation - Updated with your style -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto nav-container">
-            <a href="index.html" class="nav-logo">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
                 <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
             </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <i data-feather="menu"></i>
             </button>
-            <div class="desktop-nav" id="desktopNav">
-                <a href="story.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Story</a>
+            <div class="desktop-nav hidden md:flex space-x-10" id="desktopNav">
+                <a href="story.html" class="text-white hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Story</a>
                 <a href="product.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Product</a>
                 <a href="contact.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
             </div>
@@ -1002,8 +831,8 @@
         <h2>Join the Waitlist</h2>
         <p>Be among the first to experience Core Motion and transform your ACL rehabilitation practice.</p>
         
-        <form class="waitlist-form" id="waitlistFormPopup">
-            <input type="email" class="waitlist-input" placeholder="Enter your email address" required aria-label="Email address">
+        <form class="waitlist-form" id="waitlistForm">
+            <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
             <button type="submit" class="waitlist-button">Join Waitlist</button>
         </form>
         
@@ -1020,11 +849,7 @@
     <!-- Hero Section -->
     <section class="hero pt-20" id="hero">
         <div class="absolute inset-0 overflow-hidden">
-            <!-- Video Background with Loading State -->
-            <div class="video-loading" id="videoLoading">
-                <span class="sr-only">Loading video...</span>
-            </div>
-            <video autoplay muted loop playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover" poster="banner.png" id="heroVideo">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" poster="Banner.png">
                 <source src=[] type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
@@ -1050,7 +875,7 @@
         <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400"></div>
     </section>
 
-    <!-- Problem Statement -->
+    <!-- Problem Statement - Updated with "Unclear" -->
     <section class="section-padding bg-black">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
@@ -1081,16 +906,15 @@
         </div>
     </section>
 
-
-    <!-- Solution: Technology Features -->
+    <!-- Solution: Technology Features - Updated with split heading -->
     <section class="section-padding bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-4">
             <div class="section-header text-center mb-12" data-aos="fade-up">
                 <p class="tagline" style="color: var(--gold-primary);">Core Motion Solution</p>
-                <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">Objective Data for Safe Return-to-Sport</h2>
-                <p class="text-lg md:text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
-                    Wearable device tracking trunk control, pelvic height, and core stability
-                </p>
+                <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">
+                    Objective Data<br>
+                    <span class="text-2xl md:text-5xl">for Safe Return-to-Sport</span>
+                </h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
@@ -1121,52 +945,49 @@
         </div>
     </section>
 
-
-  <!-- Team -->
-<section class="section-padding bg-black">
-    <div class="container mx-auto px-4">
-        <div class="section-header text-center mb-12" data-aos="fade-up">
-            <p class="tagline" style="color: var(--gold-primary);">Leadership</p>
-            <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">Clinical meets Engineering</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
-            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="avatar">
-                    <img src="deigo.jpeg" alt="Diego Grossling, PT">
-                </div>
-                <h3 class="team-name">
-                    Diego Grossling
-                    <a href="https://www.linkedin.com/in/diego-fidalgo-grossling-422ba6132/" target="_blank" rel="noopener noreferrer" class="linkedin-link" aria-label="Diego's LinkedIn Profile">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#0077B5">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </h3>
-                <p class="team-title">Chief Executive Officer</p>
-                <p class="team-credentials">MScPT, B.Kin<br>Sport Physiotherapist</p>
+    <!-- Team -->
+    <section class="section-padding bg-black">
+        <div class="container mx-auto px-4">
+            <div class="section-header text-center" data-aos="fade-up">
+                <p class="tagline mb-6" style="color: var(--gold-primary);">Leadership</p>
+                <h2 class="text-3xl md:text-5xl font-bold font-syne text-white heading-with-descenders">Clinical meets Engineering</h2>
             </div>
             
-            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="avatar">
-                    <img src="Pawel_Pic.png" alt="Pawel Kudzia">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto" style="margin-top: 3rem;">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="avatar">
+                        <img src="deigo.jpeg" alt="Diego Grossling, PT">
+                    </div>
+                    <h3 class="team-name">
+                        Diego Grossling
+                        <a href="https://www.linkedin.com/in/diego-fidalgo-grossling-422ba6132/" target="_blank" rel="noopener noreferrer" class="linkedin-link" aria-label="Diego's LinkedIn Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#0077B5">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </h3>
+                    <p class="team-title">Chief Executive Officer</p>
+                    <p class="team-credentials">MScPT, B.Kin<br>Sport Physiotherapist</p>
                 </div>
-                <h3 class="team-name">
-                    Dr. Pawel Kudzia
-                    <a href="https://www.linkedin.com/in/pkudzia/" target="_blank" rel="noopener noreferrer" class="linkedin-link" aria-label="Pawel's LinkedIn Profile">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#0077B5">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </h3>
-                <p class="team-title">Chief Technology Officer</p>
-                <p class="team-credentials">PhD, EIT<br>Biomechanics & Robotics Expert</p>
+                
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="avatar">
+                        <img src="Pawel_Pic.png" alt="Pawel Kudzia">
+                    </div>
+                    <h3 class="team-name">
+                        Dr. Pawel Kudzia
+                        <a href="https://www.linkedin.com/in/pkudzia/" target="_blank" rel="noopener noreferrer" class="linkedin-link" aria-label="Pawel's LinkedIn Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#0077B5">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </h3>
+                    <p class="team-title">Chief Technology Officer</p>
+                    <p class="team-credentials">PhD, EIT<br>Biomechanics & Robotics Expert</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <!-- CTA Section -->
     <section id="waitlist" class="section-padding bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
@@ -1192,7 +1013,7 @@
             <div class="footer-grid">
                 <!-- Company Info -->
                 <div>
-                    <a href="index.html" class="nav-logo mb-4 inline-block">
+                    <a href="index.html" class="nav-logo font-syne font-bold text-2xl mb-4 inline-block">
                         <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
                     </a>
                     <p class="text-gray-400 text-sm mt-4 leading-relaxed">
@@ -1286,25 +1107,6 @@
         // Initialize Feather icons
         feather.replace();
         
-        // Handle video loading
-        const video = document.getElementById('heroVideo');
-        const videoLoading = document.getElementById('videoLoading');
-        
-        if (video) {
-            video.addEventListener('loadeddata', () => {
-                if (videoLoading) {
-                    videoLoading.style.display = 'none';
-                }
-            });
-            
-            // Fallback for slow connections
-            setTimeout(() => {
-                if (videoLoading) {
-                    videoLoading.style.display = 'none';
-                }
-            }, 3000);
-        }
-        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const desktopNav = document.getElementById('desktopNav');
@@ -1321,7 +1123,6 @@
                 feather.replace();
             });
             
-            // Close menu when clicking a link
             desktopNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     desktopNav.classList.remove('active');
@@ -1329,18 +1130,6 @@
                     icon.setAttribute('data-feather', 'menu');
                     feather.replace();
                 });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!mobileMenuBtn.contains(e.target) && !desktopNav.contains(e.target)) {
-                    desktopNav.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('svg');
-                    if (icon) {
-                        icon.setAttribute('data-feather', 'menu');
-                        feather.replace();
-                    }
-                }
             });
         }
         
@@ -1365,22 +1154,13 @@
             });
         });
         
-        // Success Message Function
-        function showSuccessMessage() {
-            const successMessage = document.getElementById('successMessage');
-            successMessage.classList.add('show');
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 3000);
-        }
-        
         // Waitlist Popup Controls
         const waitlistPopup = document.getElementById('waitlistPopup');
         const waitlistOverlay = document.getElementById('waitlistOverlay');
         const closeWaitlist = document.getElementById('closeWaitlist');
         const joinWaitlistBtn = document.getElementById('joinWaitlistBtn');
         const waitlistTriggers = document.querySelectorAll('.waitlist-trigger');
-        const waitlistFormPopup = document.getElementById('waitlistFormPopup');
+        const waitlistForm = document.getElementById('waitlistForm');
         
         // Open popup
         function openWaitlistPopup() {
@@ -1421,30 +1201,15 @@
             }
         });
         
-        // Handle form submission with better UX
-        if (waitlistFormPopup) {
-            waitlistFormPopup.addEventListener('submit', async (e) => {
+        // Handle form submission
+        if (waitlistForm) {
+            waitlistForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = waitlistFormPopup.querySelector('input[type="email"]').value;
-                const submitButton = waitlistFormPopup.querySelector('button[type="submit"]');
-                
-                // Disable button and show loading state
-                submitButton.disabled = true;
-                submitButton.textContent = 'Joining...';
-                
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                
+                const email = waitlistForm.querySelector('input[type="email"]').value;
                 console.log('Waitlist signup:', email);
-                
-                // Reset form and show success
-                waitlistFormPopup.reset();
+                alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
                 closeWaitlistPopup();
-                showSuccessMessage();
-                
-                // Reset button
-                submitButton.disabled = false;
-                submitButton.textContent = 'Join Waitlist';
+                waitlistForm.reset();
             });
         }
         
@@ -1472,36 +1237,6 @@
                 e.preventDefault();
             }
         }, { passive: false });
-        
-        // Add keyboard navigation improvement
-        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-        const modal = document.querySelector('#waitlistPopup');
-        
-        if (modal) {
-            const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
-            const focusableContent = modal.querySelectorAll(focusableElements);
-            const lastFocusableElement = focusableContent[focusableContent.length - 1];
-            
-            document.addEventListener('keydown', function(e) {
-                if (!modal.classList.contains('active')) return;
-                
-                let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
-                
-                if (!isTabPressed) return;
-                
-                if (e.shiftKey) {
-                    if (document.activeElement === firstFocusableElement) {
-                        lastFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                } else {
-                    if (document.activeElement === lastFocusableElement) {
-                        firstFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                }
-            });
-        }
     </script>
 </body>
 </html>
