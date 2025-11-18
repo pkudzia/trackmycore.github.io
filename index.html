@@ -38,36 +38,16 @@
             overflow: hidden;
         }
         
-        /* Video background styling */
-        .hero video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-        
-        /* Ensure content is above video */
-        .hero > div {
-            position: relative;
-            z-index: 1;
-        }
-        
         .hero-content {
             text-align: left;
             z-index: 3;
             padding: 2rem;
             position: absolute;
             left: 0;
-            top: 60%;
+            top: 50%;
             transform: translateY(-50%);
             max-width: 900px;
             padding-left: 6rem;
-            margin-top: 5rem;
         }
         
         @media (min-width: 1024px) {
@@ -581,7 +561,7 @@
         }
         
         .waitlist-popup-benefits li::before {
-            content: "âœ“";
+            content: "✓";
             color: var(--gold-primary);
             font-weight: 700;
             font-size: 1.2rem;
@@ -626,60 +606,6 @@
                 right: -100%;
                 padding: 2rem 1.5rem;
             }
-        }
-        
-        /* Footer enhancements */
-        footer h4 {
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-        
-        footer h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
-        }
-        
-        footer a {
-            transition: all 0.3s ease;
-        }
-        
-        footer a:hover {
-            transform: translateX(3px);
-        }
-        
-        footer .hover\:text-gold-primary:hover {
-            color: var(--gold-primary);
-        }
-        
-        footer svg {
-            transition: all 0.3s ease;
-        }
-        
-        footer a:hover svg {
-            transform: scale(1.15);
-        }
-        
-        /* Proudly Canadian maple leaf styling */
-        footer p:has(span:first-child) {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        @keyframes mapleWave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-        }
-        
-        footer p span:first-child {
-            display: inline-block;
-            animation: mapleWave 3s ease-in-out infinite;
         }
     </style>
 </head>
@@ -728,12 +654,12 @@
     <!-- Hero Section -->
     <section class="hero pt-20" id="hero">
         <div class="absolute inset-0 overflow-hidden">
-            <!-- Video Background -->
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <!-- Video Background with Fallback -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1600">
                 <source src="MyMovie.mp4" type="video/mp4">
-                <!-- Fallback image if video doesn't load -->
-                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1600" alt="Athletic training" class="absolute inset-0 w-full h-full object-cover">
             </video>
+            <!-- Fallback image if video doesn't load -->
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1600')] bg-cover bg-center" style="z-index: -1;"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
         </div>
         
@@ -745,7 +671,7 @@
             </h1>
             
             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                Empowering therapists with objective movement analysis and real-time biofeedback guiding athletes safely from injury back to sport.
+                Empowering therapists with objective movement analysis and real-time biofeedback"”guiding athletes safely from injury back to sport.
             </p>
             
             <button class="cta-button" data-aos="fade-up" data-aos-delay="300" id="joinWaitlistBtn">
@@ -788,6 +714,25 @@
         </div>
     </section>
 
+
+    <!-- Mission -->
+    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <p class="tagline" style="color: var(--gold-primary);">Our Mission</p>
+                <h2 class="text-4xl md:text-5xl font-bold font-syne text-white mb-8">
+                    Objective Decisions for ACL Recovery
+                </h2>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    We guide and empower therapists as they collaborate with athletes returning from ACL injury. 
+                    By addressing movement from the centre—the core—Core Motion integrates balance and trunk control through 
+                    sport-specific rehabilitation and conditioning.
+                </p>
+                
+            </div>
+        </div>
+    </section>
+
     <!-- Solution: Technology Features -->
     <section class="py-20 bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-6">
@@ -803,7 +748,7 @@
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="100">
                     <div>
                         <h3 class="bento-title">Real-Time Feedback</h3>
-                        <p class="bento-desc">Integrated haptic and audio alerts guide athletes to correct movement patterns instantlyâ€”helping therapists coach more effectively during dynamic training</p>
+                        <p class="bento-desc">Integrated haptic and audio alerts guide athletes to correct movement patterns instantly"”helping therapists coach more effectively during dynamic training</p>
                     </div>
                     <div class="bento-metric">&lt;100ms</div>
                 </div>
@@ -811,7 +756,7 @@
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="150">
                     <div>
                         <h3 class="bento-title">Core Control Tracking</h3>
-                        <p class="bento-desc">Portable system measures trunk stability and balance during sport-specific movementsâ€”clinical-grade data without the lab</p>
+                        <p class="bento-desc">Portable system measures trunk stability and balance during sport-specific movements"”clinical-grade data without the lab</p>
                     </div>
                     <div class="bento-metric">&lt;155g</div>
                 </div>
@@ -819,7 +764,7 @@
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="200">
                     <div>
                         <h3 class="bento-title">Objective Progress</h3>
-                        <p class="bento-desc">Track movement quality over time with quantifiable metricsâ€”giving therapists confidence in return-to-play decisions</p>
+                        <p class="bento-desc">Track movement quality over time with quantifiable metrics"”giving therapists confidence in return-to-play decisions</p>
                     </div>
                     <div class="bento-metric">100Hz</div>
                 </div>
@@ -843,7 +788,7 @@
                         
                         <h3 class="bento-title">Guided Expertise</h3>
                         <p class="bento-desc">
-                            Built-in protocols and percentile comparisons act as a mentor-in-a-boxâ€”helping less experienced therapists confidently navigate the ACL return-to-sport pathway
+                            Built-in protocols and percentile comparisons act as a mentor-in-a-box"”helping less experienced therapists confidently navigate the ACL return-to-sport pathway
                         </p>
                     </div>
                     
@@ -851,7 +796,7 @@
                         
                         <h3 class="bento-title">Reduced Liability</h3>
                         <p class="bento-desc">
-                            Objective data reduces fear of premature clearanceâ€”back your decisions with quantifiable movement quality metrics
+                            Objective data reduces fear of premature clearance"”back your decisions with quantifiable movement quality metrics
                         </p>
                     </div>
                     
@@ -859,7 +804,7 @@
                         
                         <h3 class="bento-title">Efficiency in Practice</h3>
                         <p class="bento-desc">
-                            Automated analysis maintains quality with busy caseloadsâ€”portable enough to use anywhere from clinic to field
+                            Automated analysis maintains quality with busy caseloads"”portable enough to use anywhere from clinic to field
                         </p>
                     </div>
                     
@@ -867,7 +812,7 @@
                         
                         <h3 class="bento-title">Train Your Eye</h3>
                         <p class="bento-desc">
-                            Real-time visual biofeedback sharpens your ability to detect faulty movement patternsâ€”developing expertise faster
+                            Real-time visual biofeedback sharpens your ability to detect faulty movement patterns"”developing expertise faster
                         </p>
                     </div>
                 </div>
@@ -876,25 +821,7 @@
     </section>
     END For Therapists Section -->
 
-    <!-- Mission -->
-    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                <p class="tagline" style="color: var(--gold-primary);">Our Mission</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-syne text-white mb-8">
-                    Providing Objective Decisions for ACL Recovery
-                </h2>
-                <p class="text-xl text-gray-300 leading-relaxed mb-8">
-                    We guide and empower therapists as they collaborate with athletes returning from ACL injury. 
-                    By addressing movement from the centreâ€”the coreâ€”Core Motion integrates balance and trunk control through 
-                    sport-specific rehabilitation and conditioning.
-                </p>
-                <p class="text-lg text-gray-400 leading-relaxed">
-                    Enabling athletes to train at high performance while respecting injury healing and rehabilitation guidelinesâ€”reducing the 1-in-4 re-injury rate.
-                </p>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Team -->
     <section class="py-20 bg-black">
@@ -940,7 +867,6 @@
                     Join the Waitlist
                     <i data-feather="arrow-right"></i>
                 </button>
-                <p class="text-gray-500 mt-6"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f8fff7fed1f2fee3f4fcfee5f8feffbfe5f4f2f9">[email&#160;protected]</a></p>
             </div>
         </div>
     </section>
@@ -1033,7 +959,7 @@
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
@@ -1053,15 +979,19 @@
             });
         });
 
-        // Hero content fade effect on scroll
+        // Enhanced Parallax effect with multiple layers
+        const parallaxBg = document.querySelector('.parallax-bg');
         const heroContent = document.querySelector('.hero-content');
         
-        if (heroContent) {
+        if (parallaxBg) {
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.pageYOffset;
                 
+                // Background moves slower (creating depth)
+                parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+                
                 // Hero content fades as you scroll
-                if (scrollPosition < window.innerHeight) {
+                if (heroContent && scrollPosition < window.innerHeight) {
                     heroContent.style.opacity = 1 - (scrollPosition / window.innerHeight) * 0.7;
                 }
             });
