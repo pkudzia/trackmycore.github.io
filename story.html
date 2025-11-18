@@ -79,6 +79,14 @@
             .waitlist-form button {
                 width: 100%;
             }
+            
+            /* Stack images on mobile instead of floating */
+            .float-right,
+            .float-left {
+                float: none !important;
+                margin: 2rem auto !important;
+                max-width: 100% !important;
+            }
         }
     </style>
 </head>
@@ -99,18 +107,55 @@
 
     <!-- Story Content -->
     <section class="py-32 px-6">
-        <div class="container mx-auto max-w-4xl">
+        <div class="container mx-auto max-w-5xl">
             <h1 class="text-5xl font-bold font-syne mb-8" data-aos="fade-up" style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our Story</h1>
             
             <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="100">
-                At Core Motion, the vision is clear: to make advanced biomechanical insight accessible to athletes and clinicians everywhere. The founders—experienced in both sports medicine and cutting-edge sensor technology—saw firsthand the impact of subjective assessment and prohibitive lab costs.
+                Core Motion was born in Vancouver, Canada, from a simple but powerful observation: athletes recovering from ACL injuries often regained their strength and fitness, but something was still off. Diego, a sport physiotherapist and on-field specialist who has worked with over 500 athletes, kept seeing the same pattern. Even when athletes were cleared to play, many still moved with risky habits. They lacked awareness of how their bodies were actually moving.
             </p>
             
-            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="130">
-                Driven by this challenge, they set out to build a new standard: a wearable platform delivering research-grade precision in a portable, affordable form. Today, Core Motion bridges the gap between innovation and daily practice, empowering users to make confident, evidence-based decisions and helping athletes safely reach their highest potential.
+            <!-- Image Placeholder 1 -->
+            <div class="float-right ml-6 mb-6 rounded-xl overflow-hidden max-w-xs" data-aos="fade-up" data-aos-delay="150">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400" alt="Athlete rehabilitation training" class="w-full h-64 object-cover">
+            </div>
+            
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="200">
+                As a lifelong athlete who tore his own ACL, Diego lived this challenge firsthand. Working through his recovery with a movement-focused approach and learning from mentors like Randy Celebrini, he discovered something critical: movement compensations, whether at the knee or anywhere else, all trace back to one place: the core.
             </p>
             
-            <div class="mt-10 mission-box rounded-xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="220">
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="230">
+                That's when Diego met Dr. Pawel Kudzia, a biomechanist and engineer who was just as passionate about solving this problem. Pawel had spent years developing advanced sensor systems and understood exactly why lab-grade movement analysis was stuck in expensive labs instead of being in the hands of the therapists and athletes who needed it most.
+            </p>
+            
+            <!-- Image Placeholder 2 -->
+            <div class="float-left mr-6 mb-6 rounded-xl overflow-hidden max-w-xs" data-aos="fade-up" data-aos-delay="260">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400" alt="Technology and innovation" class="w-full h-64 object-cover">
+            </div>
+            
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="290">
+                Together, they had a breakthrough idea: what if we could bring precise biomechanical measurement out of the lab and onto the field? What if therapists could see exactly how their athletes were moving, in real time, and guide them to move better?
+            </p>
+            
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="320">
+                Core Motion was born from that vision. By combining Diego's clinical expertise with Pawel's engineering innovation, they're building technology that makes objective movement analysis accessible, portable, and practical for everyone.
+            </p>
+            
+            <!-- Image Placeholder 3 -->
+            <div class="float-right ml-6 mb-6 rounded-xl overflow-hidden max-w-xs" data-aos="fade-up" data-aos-delay="350">
+                <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=400" alt="Team collaboration and innovation" class="w-full h-64 object-cover">
+            </div>
+            
+            <p class="text-lg text-gray-300 mb-6" data-aos="fade-up" data-aos-delay="380">
+                Today, with support and mentorship from Venture UBC, Core Motion is transforming how athletes recover and return to sport. We're empowering physiotherapists to bridge the gap between the clinic and the field, giving them the tools to help athletes train and recover where it matters most: on the court, the field, or the rink.
+            </p>
+            
+            <p class="text-lg text-gray-300 mb-10" data-aos="fade-up" data-aos-delay="410">
+                This is just the beginning of our journey, and we're excited to have you join us as we work to reduce re-injury rates and help athletes reach their full potential.
+            </p>
+            
+            <div class="clear-both"></div>
+            
+            <div class="mt-16 mission-box rounded-xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="440">
                 <h2 class="text-3xl font-bold font-syne mb-4" style="color: var(--gold-light);">Our Mission</h2>
                 <p class="text-lg text-gray-200">
                     Core Motion exists to make precise biomechanical analysis accessible to every athlete and clinician. By combining advanced sensor technology with intuitive, affordable solutions, we empower individuals to track movement objectively, optimize rehabilitation, and make confident, data-driven return-to-play decisions—anywhere.
