@@ -26,3 +26,26 @@ p {
 .card p:last-child {
 	margin-bottom: 0;
 }
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    transition: opacity 0.3s ease;
+    vertical-align: middle;
+}
+
+.linkedin-link:hover {
+    opacity: 0.7;
+}
+
+.linkedin-link svg {
+    display: block;
+}
+
+.team-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
