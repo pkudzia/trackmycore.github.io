@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <meta name="description" content="Core Motion - Wearable ACL rehabilitation technology providing objective movement analysis and real-time biofeedback for safer return-to-sport decisions">
     <title>Core Motion - ACL Rehabilitation Technology</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Syne:wght@400;500;600;700;800&display=swap');
@@ -21,12 +21,57 @@
             --white: #f5f5f5;
         }
         
+        /* Prevent horizontal scroll on mobile */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             color: var(--white);
             background: var(--black);
-            overflow-x: hidden;
             font-weight: 300;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                padding: 0.5rem;
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+            }
+            
+            .desktop-nav {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 1rem;
+                z-index: 40;
+            }
+            
+            .desktop-nav.active {
+                display: block;
+            }
+            
+            .desktop-nav a {
+                display: block;
+                padding: 1rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
         }
         
         .hero {
@@ -35,19 +80,23 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            overflow: hidden;
         }
         
         .hero-content {
-            text-align: left;
             z-index: 3;
             padding: 2rem;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            max-width: 900px;
-            padding-left: 6rem;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-content {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                max-width: 900px;
+                padding-left: 4rem;
+            }
         }
         
         @media (min-width: 1024px) {
@@ -57,23 +106,19 @@
             }
         }
         
-        @media (min-width: 1440px) {
-            .hero-content {
-                padding-left: 10rem;
-                max-width: 1100px;
-            }
-        }
-        
         /* Split color logo for navigation */
         .nav-logo {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
             letter-spacing: 0;
             transition: opacity 0.3s ease;
+            font-size: 1.5rem;
         }
         
-        .nav-logo:hover {
-            opacity: 0.8;
+        @media (min-width: 768px) {
+            .nav-logo {
+                font-size: 1.5rem;
+            }
         }
         
         .nav-logo .core-text {
@@ -90,39 +135,23 @@
             font-weight: 800;
             letter-spacing: -1px;
             line-height: 1.15;
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 50%, var(--gold-white) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-transform: none;
             max-width: 700px;
         }
         
-        .mission-statement .highlight {
-            color: var(--white);
-        }
-        
-        .mission-statement .logo-inline {
-            display: inline;
-            font-family: 'Syne', sans-serif;
-            font-weight: 900;
-        }
-        
-        .mission-statement .logo-inline .core-text {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .mission-statement .logo-inline .motion-text {
-            color: var(--white);
+        @media (min-width: 768px) {
+            .mission-statement {
+                font-size: 3rem;
+            }
         }
         
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 300;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.9);
@@ -130,8 +159,14 @@
             margin: 0 0 2rem 0;
         }
         
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+        
         .tagline {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.25em;
             color: var(--gold-primary);
@@ -139,23 +174,18 @@
             margin-bottom: 1rem;
         }
         
-        .parallax-bg {
-            will-change: transform;
-            transform: translateZ(0);
-            transition: transform 0.1s ease-out;
-        }
-        
         .cta-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             font-size: 0.9rem;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             border: none;
             color: var(--white);
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
             text-transform: uppercase;
@@ -164,6 +194,16 @@
             position: relative;
             overflow: hidden;
             font-family: inherit;
+            width: 100%;
+            max-width: 300px;
+            touch-action: manipulation;
+        }
+        
+        @media (min-width: 768px) {
+            .cta-button {
+                width: auto;
+                padding: 1.2rem 2.5rem;
+            }
         }
         
         .cta-button::before {
@@ -178,7 +218,7 @@
             transition: opacity 0.3s ease;
         }
         
-        .cta-button:hover {
+        .cta-button:hover, .cta-button:active {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(184, 134, 11, 0.4);
         }
@@ -193,28 +233,36 @@
             stroke-width: 2.5;
         }
         
+        /* Hide scroll indicator on mobile */
         .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgba(184, 134, 11, 0.4);
-            border-radius: 25px;
+            display: none;
         }
         
-        .scroll-indicator::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            background: var(--gold-primary);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            animation: scrollDown 2s infinite;
+        @media (min-width: 768px) {
+            .scroll-indicator {
+                display: block;
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 30px;
+                height: 50px;
+                border: 2px solid rgba(184, 134, 11, 0.4);
+                border-radius: 25px;
+            }
+            
+            .scroll-indicator::before {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background: var(--gold-primary);
+                border-radius: 50%;
+                transform: translateX(-50%);
+                animation: scrollDown 2s infinite;
+            }
         }
         
         @keyframes scrollDown {
@@ -235,18 +283,31 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
+            min-height: 150px;
         }
         
-        .stat-card:hover {
-            border-color: var(--gold-primary);
-            transform: translateY(-5px);
+        @media (min-width: 768px) {
+            .stat-card {
+                padding: 2rem;
+            }
+        }
+        
+        .stat-card:active {
+            transform: scale(0.98);
+        }
+        
+        @media (hover: hover) {
+            .stat-card:hover {
+                border-color: var(--gold-primary);
+                transform: translateY(-5px);
+            }
         }
         
         .stat-number {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             -webkit-background-clip: text;
@@ -255,11 +316,17 @@
             margin-bottom: 0.5rem;
         }
         
+        @media (min-width: 768px) {
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+        
         .bento-item {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
-            padding: 2.5rem;
+            padding: 2rem;
             backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -267,43 +334,55 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: 250px;
         }
         
-        .bento-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(184, 134, 11, 0.3);
-            box-shadow: 0 20px 40px rgba(184, 134, 11, 0.2);
+        @media (min-width: 768px) {
+            .bento-item {
+                padding: 2.5rem;
+            }
         }
         
-        .bento-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
+        .bento-item:active {
+            transform: scale(0.98);
+        }
+        
+        @media (hover: hover) {
+            .bento-item:hover {
+                transform: translateY(-5px) scale(1.02);
+                background: rgba(255, 255, 255, 0.05);
+                border-color: rgba(184, 134, 11, 0.3);
+                box-shadow: 0 20px 40px rgba(184, 134, 11, 0.2);
+            }
         }
         
         .bento-title {
             font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
             font-weight: 600;
+        }
+        
+        @media (min-width: 768px) {
+            .bento-title {
+                font-size: 1.5rem;
+            }
         }
         
         .bento-desc {
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @media (min-width: 768px) {
+            .bento-desc {
+                font-size: 1rem;
+            }
         }
         
         .bento-metric {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             -webkit-background-clip: text;
@@ -312,25 +391,48 @@
             margin-top: 1rem;
         }
         
+        @media (min-width: 768px) {
+            .bento-metric {
+                font-size: 3rem;
+            }
+        }
+        
         .team-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        .team-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(184, 134, 11, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        @media (min-width: 768px) {
+            .team-card {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        .team-card:active {
+            transform: scale(0.98);
+        }
+        
+        @media (hover: hover) {
+            .team-card:hover {
+                transform: translateY(-10px);
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(184, 134, 11, 0.3);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            }
+            
+            .team-card:hover .avatar {
+                border-radius: 50%;
+                transform: rotate(5deg);
+            }
         }
         
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 1.5rem;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             border-radius: 30px;
@@ -344,46 +446,83 @@
             overflow: hidden;
         }
         
+        @media (min-width: 768px) {
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
         .avatar img {
-            width: 120px !important;
-            height: 120px !important;
-            max-width: 120px !important;
-            max-height: 120px !important;
+            width: 100% !important;
+            height: 100% !important;
             object-fit: cover;
             border-radius: inherit;
             display: block;
         }
         
-        .team-card:hover .avatar {
-            border-radius: 50%;
-            transform: rotate(5deg);
-        }
-        
         .team-name {
             font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0.3rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .team-name {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem;
         }
         
         .team-title {
             color: var(--gold-primary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
         
+        @media (min-width: 768px) {
+            .team-title {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+        }
+        
         .team-credentials {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+        
+        @media (min-width: 768px) {
+            .team-credentials {
+                font-size: 0.9rem;
+            }
         }
         
         .waitlist-form {
             display: flex;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 1rem;
             max-width: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .waitlist-form {
+                flex-direction: row;
+                gap: 0.5rem;
+            }
         }
         
         .waitlist-input {
@@ -393,7 +532,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: var(--white);
-            font-size: 0.95rem;
+            font-size: 16px; /* Prevents zoom on iOS */
             transition: all 0.3s ease;
         }
         
@@ -422,6 +561,7 @@
             white-space: nowrap;
             position: relative;
             overflow: hidden;
+            touch-action: manipulation;
         }
         
         .waitlist-button::before {
@@ -436,7 +576,7 @@
             transition: opacity 0.3s ease;
         }
         
-        .waitlist-button:hover {
+        .waitlist-button:hover, .waitlist-button:active {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
         }
@@ -465,21 +605,31 @@
             visibility: visible;
         }
         
-        /* Waitlist Side Popup */
+        /* Waitlist Side Popup - Full screen on mobile */
         .waitlist-popup {
             position: fixed;
-            right: -450px;
+            right: -100%;
             top: 0;
-            width: 450px;
+            width: 100%;
             height: 100vh;
             background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.98));
             backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: none;
             box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
             z-index: 9999;
             transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             overflow-y: auto;
-            padding: 3rem 2.5rem;
+            padding: 2rem 1.5rem;
+            padding-top: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .waitlist-popup {
+                right: -450px;
+                width: 450px;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 3rem 2.5rem;
+            }
         }
         
         .waitlist-popup.active {
@@ -488,10 +638,10 @@
         
         .waitlist-popup-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            width: 40px;
-            height: 40px;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -504,14 +654,23 @@
             font-size: 1.5rem;
         }
         
-        .waitlist-popup-close:hover {
+        @media (min-width: 768px) {
+            .waitlist-popup-close {
+                top: 2rem;
+                right: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .waitlist-popup-close:hover, .waitlist-popup-close:active {
             background: rgba(255, 255, 255, 0.1);
             transform: rotate(90deg);
         }
         
         .waitlist-popup h2 {
             font-family: 'Syne', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
@@ -520,11 +679,23 @@
             background-clip: text;
         }
         
+        @media (min-width: 768px) {
+            .waitlist-popup h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
         .waitlist-popup p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 2rem;
             line-height: 1.6;
-            font-size: 1.05rem;
+            font-size: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .waitlist-popup p {
+                font-size: 1.05rem;
+            }
         }
         
         .waitlist-popup .waitlist-form {
@@ -541,10 +712,16 @@
         
         .waitlist-popup-benefits h3 {
             font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: var(--white);
+        }
+        
+        @media (min-width: 768px) {
+            .waitlist-popup-benefits h3 {
+                font-size: 1.2rem;
+            }
         }
         
         .waitlist-popup-benefits ul {
@@ -558,6 +735,13 @@
             display: flex;
             align-items: start;
             gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        @media (min-width: 768px) {
+            .waitlist-popup-benefits li {
+                font-size: 1rem;
+            }
         }
         
         .waitlist-popup-benefits li::before {
@@ -565,58 +749,62 @@
             color: var(--gold-primary);
             font-weight: 700;
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
-        @media (max-width: 768px) {
-            .waitlist-popup {
-                width: 100%;
-                right: -100%;
-                padding: 2rem 1.5rem;
-            }
-            
-            .waitlist-form {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .waitlist-button {
-                width: 100%;
+        /* Improved mobile padding and spacing */
+        .section-padding {
+            padding: 3rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 5rem 1.5rem;
             }
         }
         
-        @media (max-width: 768px) {
-            .mission-statement {
-                font-size: 1.8rem;
+        /* Footer mobile optimizations */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
             }
-            
-            .hero-subtitle {
-                font-size: 1rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
-            
-            .hero-content {
-                position: relative;
-                transform: none;
-                padding-left: 2rem;
-                padding-right: 2rem;
-                top: auto;
-            }
-            
-            .waitlist-popup {
-                width: 100%;
-                right: -100%;
-                padding: 2rem 1.5rem;
-            }
+        }
+        
+        /* Touch-friendly link spacing */
+        .footer-links a {
+            display: block;
+            padding: 0.5rem 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="nav-logo">
                 <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
             </a>
-            <div class="flex space-x-10">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-feather="menu"></i>
+            </button>
+            <div class="desktop-nav" id="desktopNav">
                 <a href="story.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Story</a>
                 <a href="product.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Product</a>
                 <a href="contact.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
@@ -629,7 +817,7 @@
     
     <!-- Waitlist Side Popup -->
     <div class="waitlist-popup" id="waitlistPopup">
-        <button class="waitlist-popup-close" id="closeWaitlist">&times;</button>
+        <button class="waitlist-popup-close" id="closeWaitlist" aria-label="Close waitlist">&times;</button>
         
         <h2>Join the Waitlist</h2>
         <p>Be among the first to experience Core Motion and transform your ACL rehabilitation practice.</p>
@@ -682,28 +870,28 @@
     </section>
 
     <!-- Problem Statement -->
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-6">
+    <section class="section-padding bg-black">
+        <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-8">
+                <h2 class="text-3xl md:text-5xl font-bold font-syne mb-8">
                     <span class="text-white">The </span>
                     <span style="color: var(--gold-primary);">Challenge</span>
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
                     <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-number">1 in 4</div>
-                        <p class="text-gray-400">ACL patients re-injure within 2 years</p>
+                        <p class="text-gray-400 text-sm md:text-base">ACL patients re-injure within 2 years</p>
                     </div>
                     <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-number">0</div>
-                        <p class="text-gray-400">Objective movement data in most clinics</p>
+                        <p class="text-gray-400 text-sm md:text-base">Objective movement data in most clinics</p>
                     </div>
                     <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-number">High</div>
-                        <p class="text-gray-400">Liability concerns for therapists</p>
+                        <p class="text-gray-400 text-sm md:text-base">Liability concerns for therapists</p>
                     </div>
                 </div>
-                <p class="text-xl text-gray-300 leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed" data-aos="fade-up" data-aos-delay="400">
                     Despite advancements in sports medicine, ACL re-injury rates remain alarmingly high. The gap? 
                     <span style="color: var(--gold-primary); font-weight: 500;">Objective movement analysis between the clinic and return to play.</span>
                     Therapists need confidence in their clearance decisions, athletes need safer transitions back to sport.
@@ -714,17 +902,17 @@
 
 
     <!-- Solution: Technology Features -->
-    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="section-header text-center mb-16" data-aos="fade-up">
+    <section class="section-padding bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="section-header text-center mb-12" data-aos="fade-up">
                 <p class="tagline" style="color: var(--gold-primary);">Core Motion Solution</p>
-                <h2 class="text-4xl md:text-6xl font-bold font-syne text-white">Objective Data for Safe Return-to-Sport</h2>
-                <p class="text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">Objective Data for Safe Return-to-Sport</h2>
+                <p class="text-lg md:text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
                     Wearable device tracking trunk control, pelvic height, and core stability
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
                 <div class="bento-item" data-aos="fade-up" data-aos-delay="100">
                     <div>
                         <h3 class="bento-title">Real-Time Feedback</h3>
@@ -754,14 +942,14 @@
 
 
   <!-- Team -->
-<section class="py-20 bg-black">
-    <div class="container mx-auto px-6">
-        <div class="section-header text-center mb-16" data-aos="fade-up">
+<section class="section-padding bg-black">
+    <div class="container mx-auto px-4">
+        <div class="section-header text-center mb-12" data-aos="fade-up">
             <p class="tagline" style="color: var(--gold-primary);">Leadership</p>
-            <h2 class="text-4xl md:text-6xl font-bold font-syne text-white">Clinical meets Engineering</h2>
+            <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">Clinical meets Engineering</h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
             <div class="team-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="avatar">
                     <img src="deigo.jpeg" alt="Diego Grossling, PT">
@@ -800,16 +988,16 @@
 
 
     <!-- CTA Section -->
-    <section id="waitlist" class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
+    <section id="waitlist" class="section-padding bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+        <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold font-syne mb-6 text-white">
+                <h2 class="text-3xl md:text-5xl font-bold font-syne mb-6 text-white">
                     Ready to Transform ACL Rehabilitation?
                 </h2>
-                <p class="text-xl text-gray-400 mb-8">
+                <p class="text-lg md:text-xl text-gray-400 mb-8">
                     Join us in improving return-to-sport outcomes and reducing ACL re-injury rates. Be the first to know when we launch.
                 </p>
-                <button class="cta-button inline-flex items-center waitlist-trigger" data-aos="fade-up" data-aos-delay="100">
+                <button class="cta-button inline-flex items-center waitlist-trigger mx-auto" data-aos="fade-up" data-aos-delay="100">
                     Join the Waitlist
                     <i data-feather="arrow-right"></i>
                 </button>
@@ -818,12 +1006,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 bg-black border-t border-gray-800">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer class="section-padding bg-black border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="footer-grid">
                 <!-- Company Info -->
-                <div class="col-span-1 md:col-span-1">
-                    <a href="index.html" class="nav-logo font-syne font-bold text-2xl mb-4 inline-block">
+                <div>
+                    <a href="index.html" class="nav-logo mb-4 inline-block">
                         <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
                     </a>
                     <p class="text-gray-400 text-sm mt-4 leading-relaxed">
@@ -834,7 +1022,7 @@
                 <!-- Quick Links -->
                 <div>
                     <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Company</h4>
-                    <ul class="space-y-3">
+                    <ul class="footer-links space-y-1">
                         <li><a href="story.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Our Story</a></li>
                         <li><a href="product.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Our Product</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Contact</a></li>
@@ -845,7 +1033,7 @@
                 <!-- Resources -->
                 <div>
                     <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Resources</h4>
-                    <ul class="space-y-3">
+                    <ul class="footer-links space-y-1">
                         <li><a href="#" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Clinical Research</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Documentation</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Privacy Policy</a></li>
@@ -870,17 +1058,17 @@
                     
                     <!-- Social Media Links -->
                     <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/core-motion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/core-motion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors p-2" aria-label="LinkedIn">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/coremotion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors" aria-label="Instagram">
+                        <a href="https://www.instagram.com/coremotion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors p-2" aria-label="Instagram">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
-                        <a href="https://www.youtube.com/@coremotion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@coremotion" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold-primary transition-colors p-2" aria-label="YouTube">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
@@ -890,29 +1078,60 @@
             </div>
             
             <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-gray-800">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <p class="text-gray-500 text-sm">&copy; 2025 Core Motion Technologies Inc. All rights reserved.</p>
-                        <p class="text-gray-500 text-sm mt-1">Patent Pending · Proprietary Technology</p>
+            <div class="pt-8 mt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-center md:text-left">
+                        <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 Core Motion Technologies Inc. All rights reserved.</p>
+                        <p class="text-gray-500 text-xs md:text-sm mt-1">Patent Pending · Proprietary Technology</p>
                     </div>
                     <div class="flex gap-6">
-                        <a href="#" class="text-gray-500 hover:text-gold-primary transition-colors text-sm">Privacy Policy</a>
-                        <a href="#" class="text-gray-500 hover:text-gold-primary transition-colors text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-500 hover:text-gold-primary transition-colors text-xs md:text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-500 hover:text-gold-primary transition-colors text-xs md:text-sm">Terms of Service</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            disable: 'mobile' // Disable animations on mobile for better performance
         });
         
+        // Initialize Feather icons
         feather.replace();
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const desktopNav = document.getElementById('desktopNav');
+        
+        if (mobileMenuBtn && desktopNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                desktopNav.classList.toggle('active');
+                // Toggle icon between menu and x
+                const icon = mobileMenuBtn.querySelector('svg');
+                if (desktopNav.classList.contains('active')) {
+                    icon.setAttribute('data-feather', 'x');
+                } else {
+                    icon.setAttribute('data-feather', 'menu');
+                }
+                feather.replace();
+            });
+            
+            // Close menu when clicking a link
+            desktopNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    desktopNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('svg');
+                    icon.setAttribute('data-feather', 'menu');
+                    feather.replace();
+                });
+            });
+        }
         
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -920,28 +1139,22 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    if (desktopNav && desktopNav.classList.contains('active')) {
+                        desktopNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('svg');
+                        icon.setAttribute('data-feather', 'menu');
+                        feather.replace();
+                    }
+                    
+                    // Scroll to target
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
-
-        // Enhanced Parallax effect with multiple layers
-        const parallaxBg = document.querySelector('.parallax-bg');
-        const heroContent = document.querySelector('.hero-content');
-        
-        if (parallaxBg) {
-            window.addEventListener('scroll', () => {
-                const scrollPosition = window.pageYOffset;
-                
-                // Background moves slower (creating depth)
-                parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-                
-                // Hero content fades as you scroll
-                if (heroContent && scrollPosition < window.innerHeight) {
-                    heroContent.style.opacity = 1 - (scrollPosition / window.innerHeight) * 0.7;
-                }
-            });
-        }
         
         // Waitlist Popup Controls
         const waitlistPopup = document.getElementById('waitlistPopup');
@@ -997,9 +1210,39 @@
                 const email = waitlistForm.querySelector('input[type="email"]').value;
                 console.log('Waitlist signup:', email);
                 // Add your form submission logic here
+                alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
                 closeWaitlistPopup();
+                waitlistForm.reset();
             });
         }
+        
+        // Disable parallax on mobile for better performance
+        const isMobile = window.innerWidth < 768;
+        if (!isMobile) {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (parallaxBg) {
+                window.addEventListener('scroll', () => {
+                    const scrollPosition = window.pageYOffset;
+                    
+                    // Background moves slower (creating depth)
+                    parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+                    
+                    // Hero content fades as you scroll
+                    if (heroContent && scrollPosition < window.innerHeight) {
+                        heroContent.style.opacity = 1 - (scrollPosition / window.innerHeight) * 0.7;
+                    }
+                });
+            }
+        }
+        
+        // Prevent iOS bounce effect
+        document.addEventListener('touchmove', function(e) {
+            if (waitlistPopup.classList.contains('active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
