@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-    <meta name="description" content="Core Motion - Wearable ACL rehabilitation technology providing objective movement analysis and real-time biofeedback for safer return-to-sport decisions">
-    <title>Core Motion - ACL Rehabilitation Technology</title>
+    <meta name="description" content="CoreMotion™ - Wearable ACL rehabilitation technology providing objective movement analysis and real-time biofeedback for safer return-to-sport decisions">
+    <title>CoreMotion™ - ACL Rehabilitation Technology</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -118,12 +118,37 @@
         }
         
         /* Split color logo for navigation */
+        .nav-logo {
+            text-decoration: none !important;
+        }
+        
+        .nav-logo:hover {
+            text-decoration: none !important;
+        }
+        
         .nav-logo .core-text {
             color: var(--gold-primary);
+            text-decoration: none !important;
         }
         
         .nav-logo .motion-text {
             color: var(--white);
+            text-decoration: none !important;
+        }
+        
+        .nav-logo .motion-text em {
+            font-style: italic;
+            font-weight: 800;
+            text-decoration: none !important;
+        }
+        
+        .nav-logo .tm-symbol {
+            font-size: 0.4em;
+            color: var(--white);
+            font-weight: 400;
+            vertical-align: super;
+            margin-left: 0.1em;
+            text-decoration: none !important;
         }
         
         .nav-logo:hover {
@@ -513,12 +538,48 @@
             margin-top: auto;
         }
         
+        .flip-card-label em {
+            font-style: italic;
+            text-decoration: none !important;
+        }
+        
+        .flip-card-label span {
+            text-decoration: none !important;
+        }
+        
+        /* Ensure TM symbol never has underline anywhere */
+        sup, .tm-symbol, .flip-tm-symbol {
+            text-decoration: none !important;
+        }
+        
+        a sup, a .tm-symbol, a .flip-tm-symbol {
+            text-decoration: none !important;
+        }
+        
         .flip-card-solution-title {
             font-family: 'Syne', sans-serif;
             font-size: 1.75rem;
             font-weight: 700;
-            color: var(--gold-primary);
+            color: var(--white);
             margin-bottom: 1rem;
+        }
+        
+        .flip-card-solution-title .flip-core-text {
+            color: var(--gold-primary);
+        }
+        
+        .flip-card-solution-title .flip-motion-text {
+            font-style: italic;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .flip-card-solution-title .flip-tm-symbol {
+            font-size: 0.4em;
+            color: var(--white);
+            font-weight: 400;
+            vertical-align: super;
+            margin-left: 0.1em;
         }
         
         @media (min-width: 768px) {
@@ -986,9 +1047,12 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
-                <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
-            </a>
+            <div class="flex items-center">
+                <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
+                    <span class="core-text">Core</span><span class="motion-text"><em>Motion</em></span>
+                </a>
+                <span class="tm-symbol" style="font-size: 0.4em; color: var(--white); font-weight: 400; vertical-align: super; margin-left: 0.1em;">™</span>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <i data-feather="menu"></i>
             </button>
@@ -1008,7 +1072,7 @@
         <button class="waitlist-popup-close" id="closeWaitlist" aria-label="Close waitlist">&times;</button>
         
         <h2>Join the Waitlist</h2>
-        <p>Be among the first to experience Core Motion and transform your ACL rehabilitation practice.</p>
+        <p>Be among the first to experience <span style="color: var(--gold-primary); font-weight: 600;">Core</span><span style="font-weight: 600;"><em>Motion</em></span><span style="font-size: 0.7em; vertical-align: super;">™</span> and transform your ACL rehabilitation practice.</p>
         
         <form class="waitlist-form" id="waitlistForm">
             <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
@@ -1089,7 +1153,7 @@
     <section class="section-padding bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-4">
             <div class="section-header text-center mb-8" data-aos="fade-up">
-                <p class="tagline" style="color: var(--gold-primary);">Core Motion Solution</p>
+                <p class="tagline"><span style="color: var(--gold-primary);">Core</span><em>Motion</em><span style="font-size: 0.7em; vertical-align: super;">™</span> Solution</p>
                 <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">
                     From Guesswork<br>
                     <span class="text-2xl md:text-5xl">to Confidence</span>
@@ -1108,14 +1172,16 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I moving correctly?"</h3>
                             <p class="flip-card-problem">Athletes guess.<br>Therapists observe subjectively.</p>
-                            <div class="flip-card-label">Without Core Motion</div>
+                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
                             <div class="flip-hint">Click to see solution →</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
-                            <h3 class="flip-card-solution-title">Core Motion</h3>
+                            <h3 class="flip-card-solution-title">
+                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                            </h3>
                             <p class="flip-card-solution-text">Real-time feedback when movement patterns deviate. Both athlete and therapist know immediately.</p>
                             <div class="flip-card-metric">Clarity</div>
                             <div class="flip-hint">Click to flip back →</div>
@@ -1131,14 +1197,16 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I stable?"</h3>
                             <p class="flip-card-problem">Limited to visual checks<br>in clinic settings.</p>
-                            <div class="flip-card-label">Without Core Motion</div>
+                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
                             <div class="flip-hint">Click to see solution →</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
-                            <h3 class="flip-card-solution-title">Core Motion</h3>
+                            <h3 class="flip-card-solution-title">
+                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                            </h3>
                             <p class="flip-card-solution-text">Objective data captured anywhere—clinic, field, or gym.</p>
                             <div class="flip-card-metric">Train Anywhere</div>
                             <div class="flip-hint">Click to flip back →</div>
@@ -1154,14 +1222,16 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I ready to return?"</h3>
                             <p class="flip-card-problem">Uncertain clearance<br>decisions create anxiety.</p>
-                            <div class="flip-card-label">Without Core Motion</div>
+                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
                             <div class="flip-hint">Click to see solution →</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
-                            <h3 class="flip-card-solution-title">Core Motion</h3>
+                            <h3 class="flip-card-solution-title">
+                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                            </h3>
                             <p class="flip-card-solution-text">Data-backed return-to-play decisions both athlete and therapist trust.</p>
                             <div class="flip-card-metric">Confidence</div>
                             <div class="flip-hint">Click to flip back →</div>
@@ -1239,9 +1309,12 @@
             <div class="footer-grid">
                 <!-- Company Info -->
                 <div>
-                    <a href="index.html" class="nav-logo font-syne font-bold text-2xl mb-4 inline-block">
-                        <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
-                    </a>
+                    <div class="flex items-center mb-4">
+                        <a href="index.html" class="nav-logo font-syne font-bold text-2xl inline-block">
+                            <span class="core-text">Core</span><span class="motion-text"><em>Motion</em></span>
+                        </a>
+                        <span class="tm-symbol" style="font-size: 0.4em; color: var(--white); font-weight: 400; vertical-align: super; margin-left: 0.1em;">™</span>
+                    </div>
                     <p class="text-gray-400 text-sm mt-4 leading-relaxed">
                         Empowering therapists with objective movement analysis and real-time biofeedback for safer ACL rehabilitation.
                     </p>
@@ -1309,7 +1382,7 @@
             <div class="pt-8 mt-8 border-t border-gray-800">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div class="text-center md:text-left">
-                        <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 Core Motion Technologies Inc. All rights reserved.</p>
+                        <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 CoreMotion™ Technologies Inc. All rights reserved.</p>
                         <p class="text-gray-500 text-xs md:text-sm mt-1">Patent Pending · Proprietary Technology</p>
                     </div>
                     <div class="flex gap-6">
