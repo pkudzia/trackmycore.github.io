@@ -119,10 +119,16 @@
         
         /* Split color logo for navigation */
         .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0;
+            transition: opacity 0.3s ease;
+            font-size: 1.5rem;
             text-decoration: none !important;
         }
         
         .nav-logo:hover {
+            opacity: 0.8;
             text-decoration: none !important;
         }
         
@@ -134,27 +140,6 @@
         .nav-logo .motion-text {
             color: var(--white);
             text-decoration: none !important;
-        }
-        
-        .nav-logo .motion-text em {
-            font-style: italic;
-            font-weight: 600;
-            text-decoration: none !important;
-        }
-        
-        .nav-logo .tm-symbol {
-            font-size: 0.4em;
-            color: var(--white);
-            font-weight: 400;
-            vertical-align: super;
-             margin-left: 0.15em;
-             margin-top: -0.2em;         /* Add this to move it up/down (negative = up, positive = down) */
-            text-decoration: none !important;
-        }
-        
-        .nav-logo:hover {
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
         }
         
         /* Main hero mission statement */
@@ -539,24 +524,6 @@
             margin-top: auto;
         }
         
-        .flip-card-label em {
-            font-style: italic;
-            text-decoration: none !important;
-        }
-        
-        .flip-card-label span {
-            text-decoration: none !important;
-        }
-        
-        /* Ensure TM symbol never has underline anywhere */
-        sup, .tm-symbol, .flip-tm-symbol {
-            text-decoration: none !important;
-        }
-        
-        a sup, a .tm-symbol, a .flip-tm-symbol {
-            text-decoration: none !important;
-        }
-        
         .flip-card-solution-title {
             font-family: 'Syne', sans-serif;
             font-size: 1.75rem;
@@ -570,17 +537,7 @@
         }
         
         .flip-card-solution-title .flip-motion-text {
-            font-style: italic;
-            font-weight: 700;
             color: var(--white);
-        }
-        
-        .flip-card-solution-title .flip-tm-symbol {
-            font-size: 0.4em;
-            color: var(--white);
-            font-weight: 400;
-            vertical-align: super;
-            margin-left: 0.1em;
         }
         
         @media (min-width: 768px) {
@@ -607,7 +564,7 @@
         
         .flip-card-metric {
             font-family: 'Syne', sans-serif;
-            font-size: 1 rem;
+            font-size: 1rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             -webkit-background-clip: text;
@@ -1048,18 +1005,14 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
-                    <span class="core-text">Core</span><span class="motion-text"><em>Motion</em></span>
-                </a>
-                <span class="tm-symbol" style="font-size: 0.4em; color: var(--white); font-weight: 400; vertical-align: super; margin-left: 0.2em;">™</span>
-            </div>
+            <a href="index.html" class="nav-logo font-syne font-bold text-2xl">
+                <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
+            </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <i data-feather="menu"></i>
             </button>
             <div class="desktop-nav hidden md:flex space-x-10" id="desktopNav">
-                <a href="story.html" class="text-white hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Story</a>
-                <!-- <a href="product.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Our Product</a> -->
+                <!-- Our Story link hidden -->
                 <a href="contact.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
             </div>
         </div>
@@ -1072,12 +1025,12 @@
     <div class="waitlist-popup" id="waitlistPopup">
         <button class="waitlist-popup-close" id="closeWaitlist" aria-label="Close waitlist">&times;</button>
         
-        <h2>Join the Waitlist</h2>
-        <p>Be among the first to experience <span style="color: var(--gold-primary); font-weight: 600;">Core</span><span style="font-weight: 600;"><em>Motion</em></span><span style="font-size: 0.7em; vertical-align: super;">™</span> and transform your ACL rehabilitation practice.</p>
+        <h2>Join Our Mailing List</h2>
+        <p>Be among the first to experience <span style="color: var(--gold-primary); font-weight: 600;">CORE</span><span style="font-weight: 600;">MOTION</span> and transform your ACL rehabilitation practice.</p>
         
         <form class="waitlist-form" id="waitlistForm">
             <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
-            <button type="submit" class="waitlist-button">Join Waitlist</button>
+            <button type="submit" class="waitlist-button">Subscribe</button>
         </form>
         
         <div class="waitlist-popup-benefits">
@@ -1094,7 +1047,7 @@
     <section class="hero pt-20" id="hero">
         <div class="absolute inset-0 overflow-hidden">
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" poster="Banner.png">
-                <source src=[] type="video/mp4">
+                <source src="" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
         </div>
@@ -1102,16 +1055,12 @@
         <div class="hero-content">
             <p class="tagline" data-aos="fade-up">Make Data-Driven Decisions About Return to Sport</p>
             
-            <h1 class="mission-statement" data-aos="fade-up" data-aos-delay="100">
-                Your Biomechanics, Measured
-            </h1>
-            
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
                 Empowering therapists with objective movement analysis and real-time biofeedback guiding athletes safely from injury back to sport.
             </p>
             
-            <button class="cta-button" data-aos="fade-up" data-aos-delay="300" id="joinWaitlistBtn">
-                Join Waitlist
+            <button class="cta-button" data-aos="fade-up" data-aos-delay="200" id="joinWaitlistBtn">
+                Join Mailing List for Updates
                 <i data-feather="arrow-right"></i>
             </button>
         </div>
@@ -1154,7 +1103,7 @@
     <section class="section-padding bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-4">
             <div class="section-header text-center mb-8" data-aos="fade-up">
-                <p class="tagline"><span style="color: var(--gold-primary);">Core</span><em>Motion</em><span style="font-size: 0.7em; vertical-align: super;">™</span> Solution</p>
+                <p class="tagline"><span style="color: var(--gold-primary);">CORE</span>MOTION Solution</p>
                 <h2 class="text-3xl md:text-6xl font-bold font-syne text-white">
                     From Guesswork<br>
                     <span class="text-2xl md:text-5xl">to Confidence</span>
@@ -1173,19 +1122,19 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I moving correctly?"</h3>
                             <p class="flip-card-problem">Athletes guess.<br>Therapists observe subjectively.</p>
-                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
-                            <div class="flip-hint">Click to see solution →</div>
+                            <div class="flip-card-label">Without COREMOTION</div>
+                            <div class="flip-hint">Click to see solution</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
                             <h3 class="flip-card-solution-title">
-                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                                <span class="flip-core-text">CORE</span><span class="flip-motion-text">MOTION</span>
                             </h3>
                             <p class="flip-card-solution-text">Real-time feedback when movement patterns deviate. Both athlete and therapist know immediately.</p>
                             <div class="flip-card-metric">Clarity</div>
-                            <div class="flip-hint">Click to flip back →</div>
+                            <div class="flip-hint">Click to flip back</div>
                         </div>
                     </div>
                 </div>
@@ -1198,19 +1147,19 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I stable?"</h3>
                             <p class="flip-card-problem">Limited to visual checks<br>in clinic settings.</p>
-                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
-                            <div class="flip-hint">Click to see solution →</div>
+                            <div class="flip-card-label">Without COREMOTION</div>
+                            <div class="flip-hint">Click to see solution</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
                             <h3 class="flip-card-solution-title">
-                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                                <span class="flip-core-text">CORE</span><span class="flip-motion-text">MOTION</span>
                             </h3>
-                            <p class="flip-card-solution-text">Objective data captured anywhere—clinic, field, or gym.</p>
+                            <p class="flip-card-solution-text">Objective data captured anywhere: clinic, field, or gym.</p>
                             <div class="flip-card-metric">Anywhere</div>
-                            <div class="flip-hint">Click to flip back →</div>
+                            <div class="flip-hint">Click to flip back</div>
                         </div>
                     </div>
                 </div>
@@ -1223,19 +1172,19 @@
                             <div class="flip-card-icon">❌</div>
                             <h3 class="flip-card-question">"Am I ready to return?"</h3>
                             <p class="flip-card-problem">Uncertain clearance<br>decisions create anxiety.</p>
-                            <div class="flip-card-label">Without Core<em>Motion</em><span style="font-size: 0.8em; vertical-align: super;">™</span></div>
-                            <div class="flip-hint">Click to see solution →</div>
+                            <div class="flip-card-label">Without COREMOTION</div>
+                            <div class="flip-hint">Click to see solution</div>
                         </div>
                         
                         <!-- Back: Solution -->
                         <div class="flip-card-back">
                             <div class="flip-card-icon-success">✓</div>
                             <h3 class="flip-card-solution-title">
-                                <span class="flip-core-text">Core</span><em class="flip-motion-text">Motion</em><span class="flip-tm-symbol">™</span>
+                                <span class="flip-core-text">CORE</span><span class="flip-motion-text">MOTION</span>
                             </h3>
                             <p class="flip-card-solution-text">Data-backed return-to-play decisions both athlete and therapist trust.</p>
                             <div class="flip-card-metric">Confidence</div>
-                            <div class="flip-hint">Click to flip back →</div>
+                            <div class="flip-hint">Click to flip back</div>
                         </div>
                     </div>
                 </div>
@@ -1296,7 +1245,7 @@
                     Ready to Move with Confidence?
                 </h2>
                 <button class="cta-button inline-flex items-center waitlist-trigger mx-auto" data-aos="fade-up" data-aos-delay="100">
-                    Join Waitlist
+                    Join Mailing List for Updates
                     <i data-feather="arrow-right"></i>
                 </button>
             </div>
@@ -1310,12 +1259,9 @@
             <div class="footer-grid">
                 <!-- Company Info -->
                 <div>
-                    <div class="flex items-center mb-4">
-                        <a href="index.html" class="nav-logo font-syne font-bold text-2xl inline-block">
-                            <span class="core-text">Core</span><span class="motion-text"><em>Motion</em></span>
-                        </a>
-                        <span class="tm-symbol" style="font-size: 0.4em; color: var(--white); font-weight: 400; vertical-align: super; margin-left: 0.2em;">™</span>
-                    </div>
+                    <a href="index.html" class="nav-logo font-syne font-bold text-2xl inline-block mb-4">
+                        <span class="core-text">CORE</span><span class="motion-text">MOTION</span>
+                    </a>
                     <p class="text-gray-400 text-sm mt-4 leading-relaxed">
                         Empowering therapists with objective movement analysis and real-time biofeedback for safer ACL rehabilitation.
                     </p>
@@ -1326,9 +1272,8 @@
                     <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Company</h4>
                     <ul class="footer-links space-y-1">
                         <li><a href="story.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Our Story</a></li>
-                        <!-- <li><a href="product.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Our Product</a></li> -->
                         <li><a href="contact.html" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Contact</a></li>
-                        <li><a href="#waitlist" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Join Waitlist</a></li>
+                        <li><a href="#waitlist" class="text-gray-400 hover:text-gold-primary transition-colors text-sm">Join Mailing List</a></li>
                     </ul>
                 </div>
                 
@@ -1383,7 +1328,7 @@
             <div class="pt-8 mt-8 border-t border-gray-800">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div class="text-center md:text-left">
-                        <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 CoreMotion™ Technologies Inc. All rights reserved.</p>
+                        <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 COREMOTION Technologies Inc. All rights reserved.</p>
                         <p class="text-gray-500 text-xs md:text-sm mt-1">Patent Pending · Proprietary Technology</p>
                     </div>
                     <div class="flex gap-6">
@@ -1506,8 +1451,8 @@
             waitlistForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const email = waitlistForm.querySelector('input[type="email"]').value;
-                console.log('Waitlist signup:', email);
-                alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
+                console.log('Mailing list signup:', email);
+                alert('Thank you for subscribing! We\'ll be in touch soon.');
                 closeWaitlistPopup();
                 waitlistForm.reset();
             });
