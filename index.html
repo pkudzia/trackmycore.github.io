@@ -718,13 +718,6 @@
             max-width: 400px;
         }
         
-        @media (min-width: 768px) {
-            .waitlist-form {
-                flex-direction: row;
-                gap: 0.5rem;
-            }
-        }
-        
         .waitlist-input {
             flex: 1;
             padding: 1rem 1.5rem;
@@ -743,6 +736,30 @@
         }
         
         .waitlist-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .waitlist-textarea {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+        
+        .waitlist-textarea:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .waitlist-textarea::placeholder {
             color: rgba(255, 255, 255, 0.4);
         }
         
@@ -783,6 +800,12 @@
         
         .waitlist-button:hover::before {
             opacity: 0.3;
+        }
+        
+        .waitlist-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* Waitlist Popup Overlay */
@@ -999,6 +1022,36 @@
             overflow: visible !important;
             text-rendering: optimizeLegibility;
         }
+        
+        /* Form label styling */
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Success message styling */
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            color: #22c55e;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1012,7 +1065,6 @@
                 <i data-feather="menu"></i>
             </button>
             <div class="desktop-nav hidden md:flex space-x-10" id="desktopNav">
-                <!-- Our Story link hidden -->
                 <a href="contact.html" class="text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
             </div>
         </div>
@@ -1029,8 +1081,26 @@
         <p>Be among the first to experience <span style="color: var(--gold-primary); font-weight: 500;">CORE</span><span style="font-weight: 500;">MOTION</span> and transform your ACL rehabilitation practice.</p>
         
         <form class="waitlist-form" id="waitlistForm">
-            <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
-            <button type="submit" class="waitlist-button">Subscribe</button>
+            <div class="form-group">
+                <label class="form-label" for="userName">Name *</label>
+                <input type="text" id="userName" class="waitlist-input" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="userEmail">Email *</label>
+                <input type="email" id="userEmail" class="waitlist-input" placeholder="Enter your email address" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="userComments">Comments (Optional)</label>
+                <textarea id="userComments" class="waitlist-textarea" placeholder="Tell us about your practice, interests, or any questions you have..."></textarea>
+            </div>
+            
+            <button type="submit" class="waitlist-button" id="submitBtn">Subscribe</button>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Thank you for subscribing! We'll be in touch soon.
+            </div>
         </form>
         
         <div class="waitlist-popup-benefits">
@@ -1038,7 +1108,7 @@
             <ul>
                 <li>Beta testing opportunities</li>
                 <li>Priority onboarding and training</li>
-                <li>Early Updates </li>
+                <li>Early Updates</li>
             </ul>
         </div>
     </div>
@@ -1406,12 +1476,17 @@
         const joinWaitlistBtn = document.getElementById('joinWaitlistBtn');
         const waitlistTriggers = document.querySelectorAll('.waitlist-trigger');
         const waitlistForm = document.getElementById('waitlistForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
         
         // Open popup
         function openWaitlistPopup() {
             waitlistPopup.classList.add('active');
             waitlistOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Reset form and hide success message when opening
+            successMessage.classList.remove('show');
+            waitlistForm.style.display = 'flex';
         }
         
         // Close popup
@@ -1446,15 +1521,55 @@
             }
         });
         
+        // Google Apps Script URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylzPyfKvbLAQmpKDnmkFrp_dxpKpPqB2JMAyq-vDd_yq-oELUbVbRGFekQkZxCKpE/exec';
+        
         // Handle form submission
         if (waitlistForm) {
-            waitlistForm.addEventListener('submit', (e) => {
+            waitlistForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const email = waitlistForm.querySelector('input[type="email"]').value;
-                console.log('Mailing list signup:', email);
-                alert('Thank you for subscribing! We\'ll be in touch soon.');
-                closeWaitlistPopup();
-                waitlistForm.reset();
+                
+                const name = document.getElementById('userName').value.trim();
+                const email = document.getElementById('userEmail').value.trim();
+                const comments = document.getElementById('userComments').value.trim();
+                
+                // Update button state
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Send data to Google Apps Script
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            comments: comments
+                        })
+                    });
+                    
+                    // Show success message
+                    successMessage.classList.add('show');
+                    waitlistForm.reset();
+                    
+                    // Close popup after delay
+                    setTimeout(() => {
+                        closeWaitlistPopup();
+                        successMessage.classList.remove('show');
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    alert('Something went wrong. Please try again.');
+                }
+                
+                // Reset button state
+                submitBtn.textContent = 'Subscribe';
+                submitBtn.disabled = false;
             });
         }
         
